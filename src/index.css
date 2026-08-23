@@ -1,0 +1,261 @@
+/* ---------------------------------------------------------------
+   Crodlin Technology — design tokens
+   Palette: warm paper + deep forest ink + burnt-orange accent.
+   Deliberately not blue/purple — HR/payroll should feel grounded,
+   human, and calm rather than "generic startup tech".
+------------------------------------------------------------------ */
+:root {
+  /* color */
+  --paper: #F7F5F0;
+  --paper-dim: #EFEBE2;
+  --ink: #14261E;
+  --ink-soft: #24382F;
+  --moss: #3C6E52;
+  --moss-light: #E7EFE9;
+  --amber: #C1541F;
+  --amber-deep: #9C4118;
+  --white: #FFFFFF;
+  --muted: #6B7369;
+  --line: #DEDACD;
+
+  /* type */
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  /* scale */
+  --step--1: clamp(0.83rem, 0.8rem + 0.15vw, 0.9rem);
+  --step-0: clamp(1rem, 0.96rem + 0.2vw, 1.1rem);
+  --step-1: clamp(1.2rem, 1.1rem + 0.4vw, 1.4rem);
+  --step-2: clamp(1.5rem, 1.35rem + 0.7vw, 1.9rem);
+  --step-3: clamp(1.9rem, 1.6rem + 1.3vw, 2.6rem);
+  --step-4: clamp(2.4rem, 1.9rem + 2.2vw, 3.6rem);
+  --step-5: clamp(3rem, 2.2rem + 3.6vw, 4.8rem);
+
+  /* motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-s: 220ms;
+  --dur-m: 320ms;
+
+  /* layout */
+  --container: 1680px;
+  --radius-s: 10px;
+  --radius-m: 16px;
+  --radius-l: 24px;
+  --shadow-card: 0 1px 2px rgba(20, 38, 30, 0.06), 0 8px 24px rgba(20, 38, 30, 0.06);
+  --shadow-card-hover: 0 4px 10px rgba(20, 38, 30, 0.08), 0 16px 40px rgba(20, 38, 30, 0.12);
+  --shadow-nav: 0 1px 0 rgba(20, 38, 30, 0.06), 0 12px 24px -12px rgba(20, 38, 30, 0.15);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--step-0);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.1;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+p {
+  margin: 0;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 0 16px;
+  }
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  letter-spacing: 0.02em;
+  color: var(--moss);
+  text-transform: lowercase;
+  margin-bottom: 14px;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--amber);
+  flex-shrink: 0;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--amber-deep);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.field {
+  border: 1px solid var(--line);
+  background: var(--white);
+  border-radius: var(--radius-s);
+  padding: 13px 16px;
+  font-family: inherit;
+  font-size: var(--step--1);
+  color: var(--ink);
+  width: 100%;
+  transition: border-color var(--dur-s) var(--ease-out), box-shadow var(--dur-s) var(--ease-out);
+}
+
+.field::placeholder {
+  color: var(--muted);
+}
+
+.field:focus {
+  outline: none;
+  border-color: var(--moss);
+  box-shadow: 0 0 0 3px var(--moss-light);
+}
+
+/* scroll-reveal primitives */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity var(--dur-m) var(--ease-out), transform var(--dur-m) var(--ease-out);
+}
+
+.reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-32px);
+  transition: opacity var(--dur-m) var(--ease-out), transform var(--dur-m) var(--ease-out);
+}
+
+.reveal-left.in-view {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(32px);
+  transition: opacity var(--dur-m) var(--ease-out), transform var(--dur-m) var(--ease-out);
+}
+
+.reveal-right.in-view {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal, .reveal-left, .reveal-right {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* ---------------------------------------------------------------
+   Ribbon button — exact clip-path polygon spec, do not recalculate.
+   Points must stay in matching order/count for interpolation.
+------------------------------------------------------------------ */
+.ribbon-btn {
+  position: relative;
+  display: inline-block;
+  padding: 28px 90px;
+  background: var(--amber);
+  color: #fff;
+  font-size: 2.5rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  white-space: nowrap;
+  clip-path: polygon(0% 0%, 88% 0%, 100% 50%, 88% 100%, 0% 100%, 12% 50%);
+  transition: clip-path 0.35s ease-in-out, background-color 0.35s ease-in-out;
+}
+
+.ribbon-btn:hover {
+  background: var(--amber-deep);
+  clip-path: polygon(12% 0%, 100% 0%, 88% 50%, 100% 100%, 12% 100%, 0% 50%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ribbon-btn {
+    transition: none;
+  }
+}
+
+.ribbon-btn-sm {
+  padding: 13px 32px;
+  background: var(--muted);
+  color: #fff;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+}
+
+.ribbon-btn-sm:hover {
+  background: var(--ink-soft);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
