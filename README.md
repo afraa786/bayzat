@@ -9,3 +9,5 @@ management platform. Built with React + Vite.
 npm install
 npm run dev
 ```
+bayzat.com
+replication 
