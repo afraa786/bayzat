@@ -11,3 +11,5 @@ npm run dev
 ```
 bayzat.com
 replication 
+
+"how will I make the visitors stay for more than 8 seconds?"
