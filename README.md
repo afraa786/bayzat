@@ -1,4 +1,4 @@
-# Crodlin Technology — Marketing Site
+# Crodlin Technology
 
 Single-page marketing site for Crodlin, a unified HR, payroll, and workforce
 management platform. Built with React + Vite.
