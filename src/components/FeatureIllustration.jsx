@@ -2,7 +2,7 @@ import { Check, TrendingUp, Sparkles } from "lucide-react";
 
 /**
   reads: overlapping, offset, layered.
- */
+*/
 export default function FeatureIllustration({ type }) {
   switch (type) {
     case "core-hr":
