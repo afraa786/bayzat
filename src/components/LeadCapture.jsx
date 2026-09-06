@@ -3,10 +3,12 @@ import { CheckCircle2 } from "lucide-react";
 import RibbonCta from "./RibbonCta";
 
 const VALUE_PROPS = [
-  "Live in days, not months, with guided setup",
-  "One record for HR, payroll, and attendance",
-  "Dedicated onboarding specialist included",
-  "Cancel or change plans anytime, no lock-in",
+  "Streamline HR operations with intuitive employee tools",
+  "Support your workforce with connected people workflows",
+  "Simplify payroll processes with accurate, compliant automation",
+  "Enhance financial management with real-time workforce costs",
+  "Increase productivity with AI-powered insights and reporting",
+  "Automate workflows with integrations your team can trust",
 ];
 
 export default function LeadCapture() {
@@ -19,14 +21,13 @@ export default function LeadCapture() {
 
   return (
     <section className="lead-section" id="get-started">
+      <img className="lead-decorative-icon" src="/decorative-icons/half-icon.png" alt="" aria-hidden="true" />
+      <img className="lead-bottom-icon" src="/decorative-icons/half-icon.png" alt="" aria-hidden="true" />
+      <img className="lead-dots" src="/decorative-icons/dotted.png" alt="" aria-hidden="true" />
       <div className="container lead-inner">
         <div className="lead-copy">
-          <p className="eyebrow">get started</p>
           <h2 className="section-title">See Crodlin running on your own data</h2>
-          <p className="lead-sub">
-            Tell us a little about your company and we'll set up a walkthrough tailored
-            to your team size and current tools.
-          </p>
+          <p className="lead-sub">Our all-in-one HR, payroll, finance, and people platform helps your team:</p>
           <ul className="lead-values">
             {VALUE_PROPS.map((v) => (
               <li key={v}>
@@ -54,7 +55,10 @@ export default function LeadCapture() {
             <label className="field-label" htmlFor="lead-phone">Phone number</label>
             <input id="lead-phone" type="tel" className="field" placeholder="+1 (555) 000-0000" value={form.phone} onChange={update("phone")} />
           </div>
-          <RibbonCta as="button" type="submit" className="ribbon-btn-sm lead-submit">Get Started</RibbonCta>
+          <div className="lead-actions">
+            <RibbonCta as="button" type="submit" className="ribbon-btn-sm lead-submit">Get Started</RibbonCta>
+            <button type="button" className="lead-video-button" aria-label="Watch a product tour">▶ Watch tour video</button>
+          </div>
         </form>
       </div>
     </section>

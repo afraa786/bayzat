@@ -55,7 +55,7 @@ export default function Footer() {
                 <p className="footer-col-title">{col.title}</p>
                 <ul>
                   {col.links.map((link) => (
-                    <li key={link}><a href="#footer-link">{link}</a></li>
+                    <li key={link}><a href={col.title === "Solutions" ? "/solutions" : "#footer-link"}>{link}</a></li>
                   ))}
                 </ul>
               </div>

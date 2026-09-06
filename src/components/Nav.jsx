@@ -3,7 +3,7 @@ import Squiggle from "./Squiggle";
 import "./TakeoverNav.css";
 
 const links = [
-  ["Platform", "#platform"], ["Solutions", "#solutions"],
+  ["Platform", "#platform"], ["Solutions", "/solutions"],
   ["Why Crodlin", "#why"], ["Resources", "#faq"],
 ];
 

@@ -9,8 +9,20 @@ import LeadCapture from "./components/LeadCapture";
 import Faq from "./components/Faq";
 import Footer from "./components/Footer";
 import CustomCursor from "./components/CustomCursor";
+import SolutionsPage from "./pages/SolutionsPage";
 
 export default function App() {
+  if (window.location.pathname === "/solutions") {
+    return (
+      <>
+        <Nav />
+        <SolutionsPage />
+        <Footer />
+        <CustomCursor />
+      </>
+    );
+  }
+
   return (
     <>
       <Nav />

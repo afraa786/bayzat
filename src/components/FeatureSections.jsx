@@ -1,6 +1,7 @@
 import { useReveal } from "../hooks/useReveal";
 import FeatureIllustration from "./FeatureIllustration";
 import RibbonCta from "./RibbonCta";
+import DecorativeAsset from "./DecorativeAsset";
 
 const SECTIONS = [
   {
@@ -65,6 +66,8 @@ function FeatureBlock({ tag, title, body, art, reversed }) {
 export default function FeatureSections() {
   return (
     <section className="feature-blocks-section" id="platform">
+      <DecorativeAsset name="asset2" className="feature-blocks-accent" />
+      <DecorativeAsset name="dotted" className="feature-blocks-dots" />
       <div className="container feature-blocks-stack">
         {SECTIONS.map((s, i) => (
           <FeatureBlock key={s.tag} {...s} reversed={i % 2 === 1} />

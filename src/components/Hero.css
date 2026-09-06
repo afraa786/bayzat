@@ -17,7 +17,7 @@
 .hero-cover { background: var(--intro-background); overflow-x: clip; }
 .hero-cover .is--hero {
   position: relative;
-  min-height: 100svh;
+  min-height: 78svh;
   background: var(--hero-orange);
   border-bottom-right-radius: var(--hero-curve);
 }
@@ -71,7 +71,7 @@
 .hero-editorial-stats p { font-size: 1.15vw; line-height: 1.25; }
 .hero-editorial-stats .hero-stat-value { font-family: var(--font-body); font-size: 4.4vw; line-height: 1; letter-spacing: 0; margin-bottom: 1vw; }
 .hero-editorial-description { margin-top: 2.4vw; font-size: 1.45vw; line-height: 1.35; }
-.hero-wordmark-space { height: 30vw; }
+.hero-wordmark-space { height: 25vw; }
 .hero-cover .is--hero::before { background: var(--hero-orange); }
 .hero-cover .is--hero::after {
   background: var(--intro-background);
@@ -100,7 +100,7 @@
 }
 .intro-section .container.is--header {
   max-width: none;
-  min-height: 720px;
+  min-height: 520px;
   padding: max(80px, 12vw) 24px 100px;
   text-align: center;
 }
@@ -141,6 +141,6 @@
   .hero-editorial-stats p { font-size: 13px; }
   .hero-editorial-description { margin-top: 24px; font-size: 18px; }
   .hero-wordmark-space { height: 42vw; }
-  .intro-section .container.is--header { min-height: 600px; padding-inline: 16px; }
+  .intro-section .container.is--header { min-height: 460px; padding-inline: 16px; }
   .intro-section-copy { margin-top: -48px; }
 }

@@ -19,8 +19,8 @@ export default function Hero({ cover = false }) {
     const context = gsap.context(() => {
       const scale = () => Math.min(
         (coverElement.clientWidth - (window.innerWidth <= 640 ? 32 : 56)) / title.offsetWidth,
-        coverElement.offsetHeight * 0.72 / title.offsetHeight,
-      );
+        coverElement.offsetHeight * 0.78 / title.offsetHeight,
+      ) * 0.8;
       const bottomAlignedY = () => {
         const style = getComputedStyle(title);
         const transform = new DOMMatrixReadOnly(style.transform === "none" ? undefined : style.transform);
@@ -46,9 +46,9 @@ export default function Hero({ cover = false }) {
         ease: "none",
         scrollTrigger: {
           trigger: coverElement,
-          start: "top top",
+          start: "bottom 25%",
           end: "bottom top",
-          // Keep the requested scroll transition; omit trailing motion when reduced.
+          // Keep the transition short around the curved handoff to the next section.
           scrub: motion.matches ? true : 1,
           invalidateOnRefresh: true,
         },

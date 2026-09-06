@@ -1,5 +1,6 @@
 import { Quote } from "lucide-react";
 import { useReveal } from "../hooks/useReveal";
+import DecorativeAsset from "./DecorativeAsset";
 
 const QUOTES = [
   {
@@ -36,6 +37,8 @@ function TestimonialCard({ quote, name, title, index }) {
 export default function Testimonials() {
   return (
     <section className="testimonials-section" id="why">
+      <DecorativeAsset name="asset3" className="testimonials-accent" />
+      <DecorativeAsset name="dotted" className="testimonials-dots" />
       <div className="container">
         <div className="section-heading">
           <p className="eyebrow">what teams say</p>

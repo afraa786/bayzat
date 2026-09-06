@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
-import { ChevronDown } from "lucide-react";
+import { Minus, Plus } from "lucide-react";
+import DecorativeAsset from "./DecorativeAsset";
 
 const FAQS = [
   {
@@ -48,7 +49,7 @@ function FaqItem({ q, a, isOpen, onToggle }) {
           onClick={onToggle}
         >
           <span>{q}</span>
-          <ChevronDown size={18} className="faq-chev" />
+          {isOpen ? <Minus size={28} className="faq-chev" /> : <Plus size={28} className="faq-chev" />}
         </button>
       </h3>
       <div
@@ -68,19 +69,24 @@ export default function Faq() {
   return (
     <section className="faq-section" id="faq">
       <div className="container faq-container">
-        <div className="section-heading">
-          <p className="eyebrow">frequently asked</p>
-          <h2 className="section-title">Questions, answered</h2>
+        <div className="faq-heading">
+          <p className="eyebrow">faq</p>
+          <h2 className="section-title">Questions we get <span>a lot</span></h2>
         </div>
-        <div className="faq-list">
-          {FAQS.map((item, i) => (
-            <FaqItem
-              key={item.q}
-              {...item}
-              isOpen={openIndex === i}
-              onToggle={() => setOpenIndex(openIndex === i ? -1 : i)}
-            />
-          ))}
+        <div className="faq-layout">
+          <div className="faq-list">
+            {FAQS.map((item, i) => (
+              <FaqItem
+                key={item.q}
+                {...item}
+                isOpen={openIndex === i}
+                onToggle={() => setOpenIndex(openIndex === i ? -1 : i)}
+              />
+            ))}
+          </div>
+          <div className="faq-visual" aria-hidden="true">
+            <DecorativeAsset name="faqs" className="faq-visual-asset" />
+          </div>
         </div>
       </div>
     </section>
