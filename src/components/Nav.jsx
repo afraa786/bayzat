@@ -1,135 +1,75 @@
-import { useEffect, useRef, useState } from "react";
-import { Menu, X } from "lucide-react";
+﻿import { useEffect, useRef, useState } from "react";
 import Squiggle from "./Squiggle";
-import RibbonCta from "./RibbonCta";
+import "./TakeoverNav.css";
 
-const PLATFORM_ITEMS = [
-  { label: "Core HR" },
-  { label: "Leave Management" },
-  { label: "Attendance" },
-  { label: "Shift Scheduling" },
-  { label: "Employee Records" },
-  { label: "Onboarding" },
+const links = [
+  ["Platform", "#platform"], ["Solutions", "#solutions"],
+  ["Why Crodlin", "#why"], ["Resources", "#faq"],
 ];
-
-const SOLUTIONS_SIZE = [
-  { label: "Small teams" },
-  { label: "Growing companies" },
-  { label: "Large enterprise" },
-];
-
-const SOLUTIONS_ROLE = [
-  { label: "For HR" },
-  { label: "For Finance" },
-  { label: "For IT" },
-];
-
-const RESOURCES_ITEMS = [
-  { label: "Blog" },
-  { label: "Case Studies" },
-  { label: "Help Center" },
-];
-
-function MegaColumn({ title, items }) {
-  return (
-    <div className="mega-col">
-      {title && <p className="mega-col-title">{title}</p>}
-      <ul>
-        {items.map(({ label }) => (
-          <li key={label}>
-            <a href="#platform" className="mega-item">{label}</a>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
 
 export default function Nav() {
-  const [scrolled, setScrolled] = useState(false);
-  const [openMenu, setOpenMenu] = useState(null);
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const closeTimer = useRef(null);
+  const [open, setOpen] = useState(false);
+  const panel = useRef(null);
+  const trigger = useRef(null);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  const openWithClear = (key) => {
-    if (closeTimer.current) clearTimeout(closeTimer.current);
-    setOpenMenu(key);
-  };
-
-  const scheduleClose = () => {
-    closeTimer.current = setTimeout(() => setOpenMenu(null), 180);
-  };
+    if (!open) return;
+    const button = trigger.current;
+    const background = [...document.querySelectorAll("main, footer")];
+    const inertStates = background.map(element => element.inert);
+    background.forEach(element => { element.inert = true; });
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const first = panel.current.querySelector("a");
+    first?.focus({ preventScroll: true });
+    const onKey = (event) => {
+      if (event.key === "Escape") setOpen(false);
+      if (event.key !== "Tab") return;
+      const items = [trigger.current, ...panel.current.querySelectorAll("a, button")];
+      const index = items.indexOf(document.activeElement);
+      if (event.shiftKey && index <= 0) {
+        event.preventDefault(); items.at(-1).focus();
+      } else if (!event.shiftKey && index === items.length - 1) {
+        event.preventDefault(); items[0].focus();
+      }
+    };
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = previous;
+      document.removeEventListener("keydown", onKey);
+      background.forEach((element, index) => { element.inert = inertStates[index]; });
+      button?.focus({ preventScroll: true });
+    };
+  }, [open]);
 
   return (
-    <header className={`nav ${scrolled ? "nav-scrolled" : ""}`}>
-      <div className="container nav-inner">
-        <a href="#top" className="nav-logo">Crodlin</a>
-
-        <nav className="nav-links">
-          <div className="nav-item" onMouseEnter={() => openWithClear("platform")} onMouseLeave={scheduleClose}>
-            <button className="nav-trigger" aria-expanded={openMenu === "platform"}>
-              <span className="nav-trigger-label">Platform<Squiggle /></span>
-            </button>
-          </div>
-          <div className="nav-item" onMouseEnter={() => openWithClear("solutions")} onMouseLeave={scheduleClose}>
-            <button className="nav-trigger" aria-expanded={openMenu === "solutions"}>
-              <span className="nav-trigger-label">Solutions<Squiggle /></span>
-            </button>
-          </div>
-          <a href="#why" className="nav-trigger" onMouseEnter={() => openWithClear(null)}>
-            <span className="nav-trigger-label">Why Crodlin<Squiggle /></span>
-          </a>
-          <div className="nav-item" onMouseEnter={() => openWithClear("resources")} onMouseLeave={scheduleClose}>
-            <button className="nav-trigger" aria-expanded={openMenu === "resources"}>
-              <span className="nav-trigger-label">Resources<Squiggle /></span>
-            </button>
-          </div>
-        </nav>
-
-        <div className="nav-actions">
-          <a href="#login" className="nav-login">Log in</a>
-          <RibbonCta as="a" href="#get-started" className="ribbon-btn-sm">Get Started</RibbonCta>
-        </div>
-
-        <button className="nav-burger" aria-label="Toggle menu" onClick={() => setMobileOpen((v) => !v)}>
-          {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+    <header className="takeover-header">
+      <div className={`sticky-nav ${open ? "" : "difference"}`}>
+        <button id="nav-btn" ref={trigger} className={open ? "menu is-open" : "menu"} onClick={() => setOpen(v => !v)} aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} aria-controls="takeover-nav">
+          <svg className="icon" viewBox="20 20 60 60" aria-hidden="true">
+            <path className="top-line" d="M30,37 L70,37" />
+            <path className="middle-line" d="M30,50 L70,50" />
+            <path className="bottom-line" d="M30,63 L70,63" />
+          </svg>
         </button>
       </div>
-
-      <div
-        className={`mega ${openMenu ? "mega-open" : ""}`}
-        onMouseEnter={() => openWithClear(openMenu)}
-        onMouseLeave={scheduleClose}
-      >
-        <div className="container mega-inner">
-          {openMenu === "platform" && <MegaColumn items={PLATFORM_ITEMS} />}
-          {openMenu === "solutions" && (
-            <>
-              <MegaColumn title="By company size" items={SOLUTIONS_SIZE} />
-              <MegaColumn title="By role" items={SOLUTIONS_ROLE} />
-            </>
-          )}
-          {openMenu === "resources" && <MegaColumn items={RESOURCES_ITEMS} />}
+      <div id="takeover-nav" className={open ? "shown" : ""} ref={panel} inert={!open} role="dialog" aria-modal={open ? true : undefined} aria-label="Main navigation">
+        <div className="takeover-contact">
+          <div className="takeover-topographic" />
+          <div className="takeover-contact-content">
+            <p className="takeover-kicker">People. Pay. Possibilities.</p>
+            <h2>Build a better workplace with us<span>.</span></h2>
+            <a className="takeover-contact-link" href="#get-started" onClick={() => setOpen(false)}>Let’s talk about your team ↗</a>
+            <p>HR, payroll, and workforce management.<br />All together with Crodlin.</p>
+          </div>
         </div>
+        <nav className="takeover-menu" aria-label="Main">
+          <ul>
+            {links.map(([label, href]) => <li key={label}><a href={href} onClick={() => setOpen(false)}><span className="nav-trigger-label">{label}<Squiggle /></span></a></li>)}
+          </ul>
+          <a className="takeover-demo" href="#get-started" onClick={() => setOpen(false)}>Get a free demo ↗</a>
+        </nav>
       </div>
-
-      {mobileOpen && (
-        <div className="nav-mobile">
-          <a href="#platform" onClick={() => setMobileOpen(false)}>Platform</a>
-          <a href="#solutions" onClick={() => setMobileOpen(false)}>Solutions</a>
-          <a href="#why" onClick={() => setMobileOpen(false)}>Why Crodlin</a>
-          <a href="#resources" onClick={() => setMobileOpen(false)}>Resources</a>
-          <a href="#login" onClick={() => setMobileOpen(false)}>Log in</a>
-          <RibbonCta as="a" href="#get-started" className="ribbon-btn-sm" onClick={() => setMobileOpen(false)}>Get Started</RibbonCta>
-        </div>
-      )}
     </header>
   );
 }

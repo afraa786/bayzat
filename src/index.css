@@ -1,6 +1,6 @@
 /* ---------------------------------------------------------------
    Crodlin Technology — design tokens
-   Palette: warm paper + deep forest ink + burnt-orange accent.
+  Palette: warm paper + deep forest ink + burnt-orange accent.
    Deliberately not blue/purple — HR/payroll should feel grounded,
    human, and calm rather than "generic startup tech".
 ------------------------------------------------------------------ */
@@ -213,6 +213,7 @@ input:focus-visible,
 .ribbon-btn {
   position: relative;
   display: inline-block;
+  font-family: var(--font-body);
   padding: 28px 90px;
   background: var(--amber);
   color: #fff;

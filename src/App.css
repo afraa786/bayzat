@@ -36,6 +36,12 @@
   flex-shrink: 0;
 }
 
+.nav .nav-logo {
+  position: relative;
+  z-index: 1;
+  transform-origin: top left;
+}
+
 .nav-links {
   display: flex;
   align-items: center;
@@ -216,11 +222,11 @@
 .hero-sub {
   margin-top: 22px;
   font-size: var(--step-1);
+  color: rgba(247, 245, 240, 0.85);
   color: rgba(247, 245, 240, 0.88);
-  max-width: 520px;
-}
-
-.hero-form {
+  background: rgba(247, 245, 240, 0.5);
+  border: 2px dashed rgba(20, 38, 30, 0.25);
+  color: rgba(247, 245, 240, 0.8);
   display: flex;
   gap: 10px;
   margin-top: 32px;
@@ -476,57 +482,67 @@
   margin-bottom: 48px;
 }
 
+.section-heading-center {
+  max-width: 640px;
+  margin: 0 auto 64px;
+  text-align: center;
+}
+
+.section-heading-center .eyebrow {
+  justify-content: center;
+}
+
 .section-title {
   font-size: var(--step-4);
 }
 
 /* =========================================================
-   FEATURE ROW (icon cards)
+   FEATURE ROW (icon + heading, open layout — no cards)
 ========================================================= */
 .feature-row-section {
-  padding: 64px 0;
+  padding: 88px 0;
 }
 
 .feature-row-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 64px;
+  row-gap: 56px;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .feature-card {
-  background: var(--white);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-m);
-  padding: 28px 24px;
-  transition: box-shadow var(--dur-m) var(--ease-out), transform var(--dur-m) var(--ease-out);
-}
-
-.feature-card:hover {
-  box-shadow: var(--shadow-card-hover);
-  transform: translateY(-3px);
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
 }
 
 .feature-card-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
   background: var(--moss-light);
   color: var(--moss);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 18px;
+  flex-shrink: 0;
 }
 
 .feature-card-title {
-  font-size: 1.1rem;
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
   margin-bottom: 8px;
 }
 
 .feature-card-desc {
-  font-size: 0.88rem;
+  font-size: 0.92rem;
   color: var(--muted);
-  line-height: 1.5;
+  line-height: 1.55;
 }
 
 /* =========================================================
@@ -1267,6 +1283,23 @@
 }
 
 @media (max-width: 640px) {
+  .nav-inner {
+    gap: 12px;
+  }
+
+  .nav-logo {
+    font-size: 2.5rem;
+  }
+
+  .nav-actions {
+    margin-left: auto;
+  }
+
+  .nav-actions .ribbon-btn-sm {
+    padding-inline: 22px;
+    font-size: 0.8rem;
+  }
+
   .hero-form {
     flex-direction: column;
   }

@@ -35,7 +35,7 @@ function TestimonialCard({ quote, name, title, index }) {
 
 export default function Testimonials() {
   return (
-    <section className="testimonials-section">
+    <section className="testimonials-section" id="why">
       <div className="container">
         <div className="section-heading">
           <p className="eyebrow">what teams say</p>

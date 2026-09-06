@@ -8,12 +8,14 @@ import Testimonials from "./components/Testimonials";
 import LeadCapture from "./components/LeadCapture";
 import Faq from "./components/Faq";
 import Footer from "./components/Footer";
+import CustomCursor from "./components/CustomCursor";
 
 export default function App() {
   return (
     <>
       <Nav />
       <main>
+        <Hero cover />
         <Hero />
         <LogoMarquee />
         <FeatureRow />
@@ -23,6 +25,7 @@ export default function App() {
         <Faq />
       </main>
       <Footer />
+      <CustomCursor />
     </>
   );
 }

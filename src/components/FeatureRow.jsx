@@ -23,7 +23,7 @@ function FeatureCard({ icon: Icon, title, desc, index }) {
 
 export default function FeatureRow() {
   return (
-    <section className="feature-row-section">
+    <section className="feature-row-section" id="solutions">
       <div className="container">
         <div className="section-heading section-heading-center">
           <p className="eyebrow">platform overview</p>
