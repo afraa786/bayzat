@@ -1,11 +1,8 @@
 import { Check, TrendingUp, Sparkles } from "lucide-react";
 
 /**
- * Collage-style visual per feature section — a primary card with a
- * secondary card and a stat badge staggered on top of it. Built from
- * original Crodlin data, not screenshots, but composed the way a
- * layered product-shot collage reads: overlapping, offset, layered.
- */
+  reads: overlapping, offset, layered.
+*/
 export default function FeatureIllustration({ type }) {
   switch (type) {
     case "core-hr":
