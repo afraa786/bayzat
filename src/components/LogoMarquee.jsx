@@ -1,40 +1,31 @@
-import {
-  Activity,
-  CalendarDays,
-  ChartNoAxesCombined,
-  CircleDollarSign,
-  FileCheck2,
-  MessageCircle,
-  Users,
-  WalletCards,
-} from "lucide-react";
+import "./LogoMarquee.css";
 
-const ICONS_ROW1 = [Activity, CalendarDays, ChartNoAxesCombined, CircleDollarSign, FileCheck2, MessageCircle, Users];
-const ICONS_ROW2 = [WalletCards, Users, FileCheck2, Activity, CircleDollarSign, CalendarDays, MessageCircle];
+const LOGOS = [
+  { name: "Celestial", color: "#6655b8" },
+  { name: "Nova", color: "#be4b32" },
+  { name: "Zenith", color: "#267a69" },
+  { name: "Acme Corp", color: "#b47720" },
+  { name: "Quantum", color: "#346bb4" },
+  { name: "Echo Valley", color: "#71813c" },
+  { name: "PULSE", color: "#c24765" },
+  { name: "APEX", color: "#ad5527" },
+];
 
 export default function LogoMarquee() {
-  const renderRow = (icons, direction) => {
-    const repeatedIcons = [...icons, ...icons, ...icons, ...icons];
-    return (
-      <div className={`integration-track integration-track-${direction}`}>
-        {repeatedIcons.map((Icon, index) => (
-          <div className="integration-icon" key={`${direction}-${index}`}>
-            <Icon size={30} strokeWidth={1.6} aria-hidden="true" />
-          </div>
-        ))}
-      </div>
-    );
-  };
-
   return (
-    <section className="marquee-section integration-section" aria-label="Compatible workplace tools">
-      <div className="integration-grid" aria-hidden="true" />
-      <div className="integration-marquee">
-        <div className="integration-mask">
-          {renderRow(ICONS_ROW1, "left")}
-          {renderRow(ICONS_ROW2, "right")}
-          <div className="integration-fade integration-fade-left" />
-          <div className="integration-fade integration-fade-right" />
+    <section className="brand-marquee" aria-label="Company logos">
+      <p className="brand-marquee-label">Trusted by popular companies</p>
+      <div className="brand-marquee-mask">
+        <div className="brand-marquee-track">
+          {[0, 1].map(copy => (
+            <div className="brand-marquee-group" key={copy} aria-hidden={copy === 1 ? true : undefined}>
+              {LOGOS.map(logo => (
+                <span className="brand-marquee-logo" key={logo.name} style={{ "--brand-color": logo.color }} tabIndex={copy === 0 ? 0 : undefined}>
+                  {logo.name}
+                </span>
+              ))}
+            </div>
+          ))}
         </div>
       </div>
     </section>

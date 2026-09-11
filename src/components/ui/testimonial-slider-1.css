@@ -1,0 +1,47 @@
+.review-slider { display: grid; grid-template-columns: minmax(120px, 2fr) minmax(0, 4fr) minmax(0, 5fr); gap: clamp(24px, 4vw, 64px); padding-top: 40px; border-top: 1px solid var(--line); }
+.review-slider-meta { display: flex; flex-direction: column; justify-content: space-between; gap: 32px; }
+.review-slider-index { display: flex; flex-direction: column; align-items: flex-start; gap: 32px; font: 400 .8rem var(--font-mono); }
+.review-slider-index p { writing-mode: vertical-rl; transform: rotate(180deg); text-transform: uppercase; letter-spacing: .15em; }
+.review-slider-thumbnails { display: flex; flex-wrap: wrap; gap: 10px; }
+.review-slider-thumbnails button { width: 64px; height: 84px; padding: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 8px; background: var(--paper-dim); opacity: .75; transition: opacity 220ms ease; }
+.review-slider-thumbnails button:hover, .review-slider-thumbnails button:focus-visible { opacity: 1; }
+.review-slider-thumbnails img { width: 100%; height: 100%; object-fit: cover; }
+.review-slider-image { position: relative; min-height: 540px; overflow: hidden; border-radius: var(--radius-m); background: var(--paper-dim); }
+.review-slider-image > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.review-slider-main { display: flex; flex-direction: column; justify-content: space-between; gap: 32px; padding: 48px 0 0; }
+.review-slider-text { overflow: hidden; }
+.review-slider-affiliation { font-size: .85rem; color: var(--muted); margin-bottom: 8px; }
+.review-slider-text h3 { font-size: 1.25rem; text-transform: none; letter-spacing: 0; font-weight: 600; }
+.review-slider-quote-icon { color: var(--amber); margin: 32px 0 16px; }
+.review-slider-text blockquote { margin: 0; font-family: var(--font-body); font-weight: 400; font-size: clamp(1.3rem, 2vw, 2rem); line-height: 1.4; letter-spacing: -.02em; }
+.review-slider-controls { display: flex; gap: 12px; }
+.review-slider-controls button { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%; border: 1px solid var(--line); background: transparent; color: var(--ink); transition: background 220ms ease, color 220ms ease; }
+.review-slider-controls button:last-child { background: var(--amber); border-color: var(--amber); color: var(--paper); }
+.review-slider-controls button:hover { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.review-slider-controls button:disabled { opacity: .4; cursor: default; }
+.review-image-in { animation: review-image-in 650ms cubic-bezier(.22, 1, .36, 1) both; }
+.review-image-out { animation: review-image-out 650ms cubic-bezier(.22, 1, .36, 1) both; }
+.review-copy-in { animation: review-copy-in 600ms cubic-bezier(.22, 1, .36, 1) both; }
+@keyframes review-image-in { from { transform: translateY(calc(var(--review-direction) * 100%)); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+@keyframes review-image-out { from { transform: translateY(0); opacity: 1; } to { transform: translateY(calc(var(--review-direction) * -100%)); opacity: 0; } }
+@keyframes review-copy-in { from { transform: translateX(calc(var(--review-direction) * 36px)); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+@media (max-width: 1000px) {
+  .review-slider { grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 28px; }
+  .review-slider-meta { grid-column: 1 / -1; flex-direction: row; align-items: center; }
+  .review-slider-index { flex-direction: row; align-items: center; gap: 20px; }
+  .review-slider-index p { writing-mode: horizontal-tb; transform: none; }
+  .review-slider-image { min-height: 480px; }
+  .review-slider-main { padding-top: 24px; }
+}
+@media (max-width: 640px) {
+  .review-slider { grid-template-columns: 1fr; padding-top: 24px; }
+  .review-slider-image { min-height: 0; height: 380px; grid-row: 1; }
+  .review-slider-meta { grid-row: 2; }
+  .review-slider-thumbnails button { width: 48px; height: 60px; }
+  .review-slider-main { padding-top: 0; min-height: 350px; }
+  .review-slider-quote-icon { margin-top: 24px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .review-image-in, .review-image-out, .review-copy-in { animation: none; }
+  .review-image-out { display: none; }
+}

@@ -69,7 +69,7 @@ export default function Faq() {
   return (
     <section className="faq-section" id="faq">
       <div className="container faq-container">
-        <div className="faq-heading">
+        <div className="section-heading section-heading-center faq-heading">
           <p className="eyebrow">faq</p>
           <h2 className="section-title">Questions we get <span>a lot</span></h2>
         </div>

@@ -693,10 +693,10 @@
 
 .solutions-hero h1 {
   max-width: 920px;
-  font-family: "Thunder", var(--font-display), serif;
-  font-size: clamp(4.5rem, 10vw, 10.5rem);
-  font-weight: 700;
-  line-height: .8;
+  font-family: var(--font-body);
+  font-size: clamp(3rem, 6vw, 6rem);
+  font-weight: var(--heading-weight);
+  line-height: var(--heading-leading);
   letter-spacing: 0;
 }
 
@@ -742,7 +742,7 @@
   .solutions-hero-inner { min-height: 78svh; }
   .solutions-hero-inner { padding: 96px 24px 72px; }
   .solutions-hero-copy { display: block; margin-top: 8vw; }
-  .solutions-hero h1 { font-size: clamp(4rem, 18vw, 7rem); }
+  .solutions-hero h1 { font-size: clamp(2.4rem, 9vw, 4rem); }
   .solutions-hero-proof { margin-top: 44px; }
   .solutions-hero-scroll { margin-top: 56px; }
 }
@@ -757,7 +757,7 @@
 
 .section-heading-center {
   max-width: 1240px;
-  margin: 0 auto 76px;
+  margin: 0 auto var(--heading-gap);
   text-align: center;
 }
 
@@ -767,9 +767,9 @@
 
 .section-title {
   font-family: var(--font-body);
-  font-size: clamp(2.4rem, 4vw, 3.4rem);
-  font-weight: 800;
-  line-height: 1.05;
+  font-size: var(--heading-size);
+  font-weight: var(--heading-weight);
+  line-height: var(--heading-leading);
   text-transform: uppercase;
   letter-spacing: 0;
 }
@@ -1447,7 +1447,7 @@
   flex-direction: column;
   align-items: center;
   gap: 12px;
-  margin: 0 auto 64px;
+  margin: 0 auto var(--heading-gap);
   text-align: center;
 }
 
@@ -1455,7 +1455,7 @@
   margin: 0;
 }
 
-.faq-heading .section-title span {
+.section-title span {
   color: var(--amber);
 }
 

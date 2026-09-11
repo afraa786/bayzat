@@ -1,0 +1,364 @@
+/* =========================================================
+   CRODLIN JOURNAL — Sliding Lightbox Gallery
+   Editorial click-triggered lightbox with GSAP animations
+========================================================= */
+
+.journal-section {
+  --journal-bg: var(--moss);
+  width: 100%;
+  background: var(--journal-bg);
+  transition: background-color 1s var(--ease-out);
+  position: relative;
+  overflow: hidden;
+}
+
+/* =========================================================
+   NAVIGATION — Top band with categories & branding
+========================================================= */
+
+.journal-nav {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  display: flex;
+  padding: clamp(1.5rem, 3vw, 2rem) clamp(1.25rem, 4vw, 2.25rem);
+  gap: clamp(1.5rem, 5vw, 2.5rem);
+  align-items: flex-start;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.journal-col {
+  display: flex;
+  gap: 1.5rem;
+  pointer-events: auto;
+}
+
+.journal-copy {
+  flex: 1;
+  max-width: 220px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.journal-copy p {
+  font-size: var(--step-0);
+  line-height: 1.55;
+}
+
+.journal-label {
+  display: inline-block;
+  white-space: nowrap;
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink);
+  background: var(--paper);
+  padding: 0.3em 0.6em;
+  margin-bottom: 0.5rem;
+  border-radius: 4px;
+}
+
+.journal-intro {
+  flex: 2;
+}
+
+.journal-intro .journal-copy {
+  max-width: 260px;
+  color: var(--white);
+}
+
+.journal-intro .journal-copy p {
+  font-weight: 500;
+}
+
+.journal-cats {
+  flex: 5;
+}
+
+.journal-cats .journal-copy {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: var(--step--1);
+}
+
+.journal-brand {
+  flex: 3;
+  flex-direction: column;
+  gap: 0.35em;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.journal-logo {
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: var(--white);
+}
+
+.journal-brand-sub {
+  font-size: var(--step--1);
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 400;
+}
+
+/* =========================================================
+   CONTAINER — Two-pane layout (gallery + preview)
+========================================================= */
+
+.journal-container {
+  position: relative;
+  top: clamp(140px, 15vw, 180px);
+  width: 100%;
+  height: clamp(60vh, 80vh, 90vh);
+  display: flex;
+  gap: clamp(1.5rem, 3vw, 2rem);
+  padding: clamp(1.5rem, 3vw, 2rem) clamp(1.25rem, 4vw, 2.25rem);
+  font-family: var(--font-body);
+}
+
+/* =========================================================
+   GALLERY — Left pane: 4×4 grid of thumbnails
+========================================================= */
+
+.journal-gallery {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 0.75rem;
+}
+
+.journal-row {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  gap: 0.75rem;
+}
+
+.journal-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  padding: 0.5rem;
+  border-radius: var(--radius-s);
+  transition: background-color var(--dur-s) var(--ease-out);
+}
+
+.journal-item:hover {
+  background: transparent;
+}
+
+.journal-index {
+  display: none;
+}
+
+.journal-img {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  border-radius: var(--radius-s);
+  overflow: hidden;
+  transition: transform var(--dur-s) var(--ease-out),
+              box-shadow var(--dur-s) var(--ease-out),
+              outline var(--dur-s) var(--ease-out);
+  position: relative;
+}
+
+.journal-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(0.3) contrast(1.1) brightness(0.95);
+  display: block;
+}
+
+.journal-img:hover {
+  transform: scale(1.08) translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  outline: 2px solid var(--white);
+  outline-offset: 2px;
+}
+
+.journal-img:hover img {
+  filter: grayscale(0.15) contrast(1.15) brightness(1);
+}
+
+/* =========================================================
+   PREVIEW BOX — Right pane: the lightbox stage
+========================================================= */
+
+.journal-preview {
+  width: 100%;
+  flex: 4;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  gap: 2em;
+  padding: 0;
+}
+
+.journal-preview-meta {
+  max-width: 180px;
+  padding-bottom: 0.25em;
+  color: rgba(255, 255, 255, 0.8);
+  text-align: right;
+}
+
+.journal-preview-meta p {
+  font-size: var(--step--1);
+  line-height: 1.55;
+}
+
+.preview-container {
+  position: relative;
+  width: clamp(320px, 50vw, 400px);
+  height: clamp(480px, 75vh, 600px);
+  aspect-ratio: 2 / 3;
+  background: var(--paper);
+  border-radius: var(--radius-m);
+  overflow: hidden;
+  flex-shrink: 0;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.preview-container img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(0.2) contrast(1.1);
+}
+
+/* =========================================================
+   RESPONSIVE — Tablet & mobile
+========================================================= */
+
+@media (max-width: 1024px) {
+  .journal-container {
+    top: clamp(120px, 12vw, 160px);
+    height: auto;
+    flex-direction: column;
+    gap: 2rem;
+    padding-bottom: 3rem;
+  }
+
+  .journal-gallery {
+    min-height: 420px;
+    gap: 0.5rem;
+  }
+
+  .journal-row {
+    gap: 0.5rem;
+  }
+
+  .journal-item {
+    padding: 0.5rem;
+  }
+
+  .journal-img {
+    height: 80px;
+  }
+
+  .journal-preview {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1.25rem;
+  }
+
+  .journal-preview-meta {
+    order: 1;
+    max-width: 100%;
+    text-align: center;
+    padding-bottom: 0;
+  }
+
+  .preview-container {
+    width: min(100%, 320px);
+    height: auto;
+  }
+}
+
+@media (max-width: 900px) {
+  .journal-nav {
+    position: static;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1.5rem clamp(1rem, 3vw, 1.5rem) 0.5rem;
+    align-items: flex-start;
+  }
+
+  .journal-cats {
+    display: none;
+  }
+
+  .journal-brand {
+    order: -1;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .journal-logo {
+    font-size: 2rem;
+  }
+
+  .journal-intro .journal-copy {
+    max-width: 34ch;
+  }
+
+  .journal-copy {
+    gap: 1rem;
+  }
+
+  .journal-container {
+    top: 0;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .journal-label {
+    font-size: var(--step--1);
+    padding: 0.25em 0.5em;
+  }
+
+  .journal-index p {
+    font-size: 0.6rem;
+  }
+
+  .journal-img {
+    width: 88%;
+    height: 72px;
+  }
+
+  .journal-item {
+    gap: 0.5em;
+    padding: 0.4rem;
+  }
+
+  .journal-logo {
+    font-size: 1.6rem;
+  }
+
+  .preview-container {
+    width: min(90%, 280px);
+    height: auto;
+    border-radius: var(--radius-s);
+  }
+}
+
+/* =========================================================
+   ANIMATION HELPERS
+========================================================= */
+
+/* Smooth appearance of journal section */
+.journal-section {
+  opacity: 1;
+}

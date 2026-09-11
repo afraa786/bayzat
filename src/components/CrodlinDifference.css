@@ -1,0 +1,54 @@
+.difference-section { position: relative; height: 100svh; min-height: 620px; overflow: hidden; background: var(--paper-dim); color: var(--ink); }
+.difference-inner { height: 100%; display: flex; flex-direction: column; padding-top: clamp(72px, 10svh, 110px); padding-bottom: 20px; }
+.difference-heading { flex-shrink: 0; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 20px; border-top: 1px solid var(--line); padding: 22px 6px 0; margin-bottom: 28px; }
+.difference-heading h2, .difference-heading p { font-family: var(--font-body); font-size: clamp(1rem, 1.35vw, 1.35rem); font-weight: 400; line-height: 1.4; letter-spacing: 0; text-transform: none; }
+.difference-heading p { text-align: center; }
+.difference-heading em { font-style: italic; }
+.difference-stage { position: relative; flex: 1; min-height: 0; overflow: hidden; border-radius: 40px; }
+.difference-col { position: absolute; top: 0; left: 0; width: 50%; height: 100%; padding: 6px; will-change: transform; }
+.difference-copy, .difference-copy-surface, .difference-photo-frame { position: relative; height: 100%; width: 100%; border-radius: 40px; overflow: hidden; background: var(--paper); }
+.difference-copy { display: flex; flex-direction: column; justify-content: space-between; gap: 24px; padding: clamp(28px, 4vw, 64px); box-shadow: inset 0 0 0 1px var(--line); }
+.difference-copy h3 { max-width: 590px; font-size: clamp(1.7rem, 3.1vw, 3rem); }
+.difference-copy p { max-width: 500px; font-size: clamp(.95rem, 1.2vw, 1.15rem); line-height: 1.7; color: var(--ink-soft); }
+.difference-copy-next { position: absolute; inset: 0; background: transparent; box-shadow: none; }
+.difference-col-2 { transform: translateX(100%); }
+.difference-col-3, .difference-col-4 { transform: translate(100%, 100%); }
+.difference-photo { position: absolute; inset: 0; padding: 6px; }
+.difference-photo-2 { clip-path: inset(0 0 100% 0); }
+.difference-photo-2 img { transform: scale(1.12); }
+.difference-photo-frame { background: var(--moss); }
+.difference-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 45% 50%; }
+.difference-photo-frame::after { content: ""; position: absolute; inset: 50% 0 0; background: linear-gradient(transparent, rgb(20 38 30 / 45%)); pointer-events: none; }
+.difference-image-tag { position: absolute; bottom: 28px; left: 28px; right: 28px; z-index: 1; width: fit-content; padding: 10px 16px; border-radius: 999px; background: var(--paper); color: var(--ink); font: 500 .75rem/1.5 var(--font-mono); }
+@media (max-width: 1000px) {
+  .difference-copy { padding: 28px; }
+  .difference-copy h3 { font-size: clamp(1.25rem, 3vw, 2rem); }
+}
+@media (max-width: 768px) {
+  .difference-section { min-height: 540px; }
+  .difference-inner { padding-top: 90px; padding-bottom: 12px; }
+  .difference-heading { grid-template-columns: 1fr; gap: 8px; padding-top: 16px; margin-bottom: 20px; }
+  .difference-heading p { text-align: left; font-size: .9rem; }
+  .difference-copy, .difference-photo-frame, .difference-copy-surface, .difference-stage { border-radius: 25px; }
+  .difference-copy { justify-content: center; padding: 24px 18px; gap: 24px; }
+  .difference-copy h3 { font-size: 1.1rem; line-height: 1.2; overflow-wrap: break-word; }
+  .difference-copy p { font-size: .8125rem; line-height: 1.55; }
+  .difference-col, .difference-photo { padding: 3px; }
+  .difference-image-tag { bottom: 16px; left: 12px; right: 12px; font-size: .65rem; padding: 8px 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .difference-section { height: auto; min-height: 0; }
+  .difference-stage { display: grid; gap: 16px; overflow: visible; }
+  .difference-col { position: relative; width: 100%; height: auto; transform: none; will-change: auto; }
+  .difference-copy { min-height: 280px; }
+  .difference-col-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .difference-photo { position: relative; height: 320px; clip-path: none; }
+  .difference-photo img { transform: none; }
+  .difference-copy-next { position: relative; margin-top: 16px; }
+  .difference-copy-surface { overflow: visible; background: transparent; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .difference-col, .difference-photo img { backface-visibility: hidden; }
+  .difference-photo img { will-change: transform; }
+}

@@ -1,54 +1,45 @@
-import { Quote } from "lucide-react";
-import { useReveal } from "../hooks/useReveal";
-import DecorativeAsset from "./DecorativeAsset";
+import { TestimonialSlider } from "./ui/testimonial-slider-1";
+import peopleImage from "../../images/office1.jpeg";
+import financeImage from "../../images/office4.jpeg";
+import operationsImage from "../../images/office3.jpeg";
+import "./Testimonials.css";
 
-const QUOTES = [
+const REVIEWS = [
   {
     quote: "We moved four spreadsheets and a ticketing queue into Crodlin in under three weeks. Payroll close went from four days to one afternoon.",
+    id: "priya",
+    imageSrc: peopleImage,
+    imageAlt: "A calm workspace with a wooden desk and upholstered chair",
     name: "Priya Nandan",
-    title: "Head of People, Kestrel Works",
+    affiliation: "Head of People, Kestrel Works",
   },
   {
     quote: "The finance view alone paid for itself. We finally see workforce cost in real time instead of reconstructing it every month end.",
+    id: "daniel",
+    imageSrc: financeImage,
+    imageAlt: "A softly lit desk with a notebook and modern lamp",
     name: "Daniel Osei",
-    title: "VP Finance, Fenwick Partners",
+    affiliation: "VP Finance, Fenwick Partners",
   },
   {
     quote: "Our managers actually use it, which is the real test. Leave requests and approvals just happen now instead of living in email.",
+    id: "meera",
+    imageSrc: operationsImage,
+    imageAlt: "Sculpted wooden chairs in a bright shared space",
     name: "Meera Chandran",
-    title: "COO, Loft & Union",
+    affiliation: "COO, Loft & Union",
   },
 ];
 
-function TestimonialCard({ quote, name, title, index }) {
-  const ref = useReveal(index * 100);
-  return (
-    <figure className="testimonial-card reveal" ref={ref}>
-      <Quote size={28} strokeWidth={1.5} className="testimonial-quote-icon" />
-      <blockquote>{quote}</blockquote>
-      <figcaption>
-        <span className="testimonial-name">{name}</span>
-        <span className="testimonial-title">{title}</span>
-      </figcaption>
-    </figure>
-  );
-}
-
 export default function Testimonials() {
   return (
-    <section className="testimonials-section" id="why">
-      <DecorativeAsset name="asset3" className="testimonials-accent" />
-      <DecorativeAsset name="dotted" className="testimonials-dots" />
+    <section className="client-stories" id="why" aria-labelledby="client-stories-title">
       <div className="container">
-        <div className="section-heading">
-          <p className="eyebrow">what teams say</p>
-          <h2 className="section-title">Trusted by people teams who'd rather not do payroll twice</h2>
+        <div className="client-stories-heading">
+          <h2 id="client-stories-title"><span>Client:</span> Helping brands to grow and say their success stories to the world.</h2>
+          <p>We help ambitious teams simplify their work and make room for growth. Here are the stories of the people building their next chapter with Crodlin.</p>
         </div>
-        <div className="testimonials-grid">
-          {QUOTES.map((t, i) => (
-            <TestimonialCard key={t.name} {...t} index={i} />
-          ))}
-        </div>
+        <TestimonialSlider reviews={REVIEWS} />
       </div>
     </section>
   );

@@ -1,0 +1,8 @@
+.client-stories { padding: clamp(80px, 9vw, 144px) 0; background: var(--paper); color: var(--ink); }
+.client-stories-heading { margin-bottom: clamp(64px, 7vw, 112px); }
+.client-stories-heading h2 { font-family: var(--font-body); font-size: clamp(2.4rem, 5.3vw, 6.3rem); line-height: 1.04; font-weight: 500; text-transform: none; letter-spacing: -.04em; }
+.client-stories-heading h2 span { color: var(--amber); }
+.client-stories-heading > p { width: 42%; margin: clamp(32px, 5vw, 80px) 0 0 36%; font-size: clamp(1.05rem, 1.5vw, 1.5rem); line-height: 1.5; color: var(--ink-soft); }
+@media (max-width: 768px) {
+  .client-stories-heading > p { width: 100%; max-width: 560px; margin-left: 0; }
+}
