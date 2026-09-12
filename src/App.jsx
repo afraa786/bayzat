@@ -13,18 +13,17 @@ import LeadCapture from "./components/LeadCapture";
 import Faq from "./components/Faq";
 import Footer from "./components/Footer";
 import CustomCursor from "./components/CustomCursor";
+import PageShell from "./components/PageShell";
 import SolutionsPage from "./pages/SolutionsPage";
+import WhyCrodlinPage from "./pages/WhyCrodlinPage";
 
 export default function App() {
   if (window.location.pathname === "/solutions") {
-    return (
-      <>
-        <Nav />
-        <SolutionsPage />
-        <Footer />
-        <CustomCursor />
-      </>
-    );
+    return <PageShell mainClassName="solutions-page"><SolutionsPage /></PageShell>;
+  }
+
+  if (window.location.pathname === "/why-crodlin") {
+    return <PageShell mainClassName="why-crodlin-page"><WhyCrodlinPage /></PageShell>;
   }
 
   return (

@@ -6,12 +6,12 @@ import ExpandingServices from "../components/ExpandingServices";
 
 export default function SolutionsPage() {
   return (
-    <main className="solutions-page">
+    <>
       <SolutionsHero />
       <FeatureRow />
       <CinematicList />
       <FeatureSections />
       <ExpandingServices />
-    </main>
+    </>
   );
 }

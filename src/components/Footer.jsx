@@ -1,4 +1,4 @@
-import { Link2, MessageCircle, Camera, PlaySquare, ShieldCheck, BadgeCheck, Apple, Smartphone } from "lucide-react";
+import { ArrowUpRight, Link2, MessageCircle, Camera, PlaySquare } from "lucide-react";
 
 const COLUMNS = [
   {
@@ -17,10 +17,6 @@ const COLUMNS = [
     title: "Company",
     links: ["About Us", "Careers", "Newsroom", "Contact"],
   },
-  {
-    title: "Legal",
-    links: ["Privacy Policy", "Terms of Service", "Cookie Policy", "Security"],
-  },
 ];
 
 const SOCIALS = [
@@ -36,10 +32,16 @@ export default function Footer() {
       <div className="container">
         <div className="footer-top">
           <div className="footer-brand">
-            <span className="nav-logo footer-logo">Crodlin</span>
+            <a href="#top" className="footer-brand-link" aria-label="Crodlin home">
+              <span className="footer-brand-mark" aria-hidden="true">C</span>
+              <span className="footer-logo">Crodlin</span>
+            </a>
             <p className="footer-tagline">
               The unified HR, payroll, and workforce platform for growing companies.
             </p>
+            <a href="#get-started" className="footer-cta">
+              Start a conversation <ArrowUpRight size={16} strokeWidth={2} />
+            </a>
             <div className="footer-socials">
               {SOCIALS.map(({ icon: Icon, label }) => (
                 <a href="#social" key={label} aria-label={label} className="footer-social-icon">
@@ -63,33 +65,15 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="footer-badges">
-          <div className="footer-badge">
-            <ShieldCheck size={16} strokeWidth={1.75} /> SOC 2 Type II
-          </div>
-          <div className="footer-badge">
-            <BadgeCheck size={16} strokeWidth={1.75} /> ISO 27001
-          </div>
-          <a href="#app-store" className="app-badge">
-            <Apple size={22} strokeWidth={1.5} />
-            <span>
-              <span className="app-badge-eyebrow">Download on the</span>
-              <span className="app-badge-name">App Store</span>
-            </span>
-          </a>
-          <a href="#google-play" className="app-badge">
-            <Smartphone size={22} strokeWidth={1.5} />
-            <span>
-              <span className="app-badge-eyebrow">Get it on</span>
-              <span className="app-badge-name">Google Play</span>
-            </span>
-          </a>
-        </div>
-
-        <div className="footer-wordmark" aria-hidden="true">CRODLIN</div>
+        <div className="footer-wordmark" aria-hidden="true">Crodlin</div>
 
         <div className="footer-bottom">
           <p>&copy; {new Date().getFullYear()} Crodlin Technology. All rights reserved.</p>
+          <nav aria-label="Legal">
+            <a href="#privacy">Privacy</a>
+            <a href="#terms">Terms</a>
+            <a href="#security">Security</a>
+          </nav>
         </div>
       </div>
     </footer>

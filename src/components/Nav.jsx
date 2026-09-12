@@ -4,7 +4,7 @@ import "./TakeoverNav.css";
 
 const links = [
   ["Platform", "#platform"], ["Solutions", "/solutions"],
-  ["Why Crodlin", "#why"], ["Resources", "#faq"],
+  ["Why Crodlin", "/why-crodlin"], ["Resources", "/#faq"],
 ];
 
 export default function Nav() {

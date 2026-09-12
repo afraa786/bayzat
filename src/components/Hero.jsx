@@ -46,10 +46,11 @@ export default function Hero({ cover = false }) {
         ease: "none",
         scrollTrigger: {
           trigger: coverElement,
-          start: "bottom 25%",
-          end: "bottom top",
-          // Keep the transition short around the curved handoff to the next section.
-          scrub: motion.matches ? true : 1,
+          start: () => window.innerWidth <= 767 ? "bottom 75%" : "bottom 25%",
+          end: () => window.innerWidth <= 767 ? "bottom 15%" : "bottom top",
+          // Mobile gets a longer, smoother touch-scroll window while desktop
+          // keeps the compact transition around the curved handoff.
+          scrub: motion.matches ? true : window.innerWidth <= 767 ? 0.65 : 1,
           invalidateOnRefresh: true,
         },
       });

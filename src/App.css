@@ -802,19 +802,45 @@
 
 .feature-row-accent {
   z-index: 1;
-  top: 8%;
-  right: -132px;
-  width: 230px;
+  top: 15%;
+  right: -168px;
+  width: 310px;
   opacity: .85;
   transform: rotate(12deg);
 }
 
 .feature-row-dots {
   z-index: 1;
-  top: 18px;
-  left: 18px;
-  width: 96px;
+  top: 0;
+  left: 0;
+  width: 132px;
   opacity: .5;
+}
+
+@media (max-width: 900px) {
+  .feature-row-accent {
+    top: 18%;
+    right: -135px;
+    width: 250px;
+  }
+
+  .feature-row-dots {
+    width: 104px;
+  }
+}
+
+@media (max-width: 640px) {
+  .feature-row-accent {
+    top: 22%;
+    right: -100px;
+    width: 180px;
+    opacity: .65;
+  }
+
+  .feature-row-dots {
+    width: 78px;
+    opacity: .38;
+  }
 }
 
 .feature-row-section > .container,
@@ -1433,7 +1459,7 @@
 ========================================================= */
 .faq-section {
   position: relative;
-  overflow: hidden;
+  overflow: clip;
   padding: 112px 0 128px;
   background: var(--paper);
 }
@@ -1468,7 +1494,7 @@
 
 .faq-visual {
   position: sticky;
-  top: 80px;
+  top: 110px;
   min-height: 520px;
   overflow: visible;
 }
@@ -1542,26 +1568,67 @@
 .footer {
   background: var(--ink);
   color: rgba(247, 245, 240, 0.75);
-  padding: 72px 0 28px;
+  padding: clamp(64px, 7vw, 108px) 0 28px;
+  overflow: hidden;
 }
 
 .footer-top {
   display: grid;
-  grid-template-columns: 1fr 2.4fr;
-  gap: 64px;
-  padding-bottom: 56px;
+  grid-template-columns: minmax(250px, .9fr) minmax(0, 1.65fr);
+  gap: clamp(48px, 8vw, 128px);
+  padding-bottom: clamp(56px, 7vw, 96px);
   border-bottom: 1px solid rgba(247, 245, 240, 0.12);
+}
+
+.footer-brand-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--paper);
+}
+
+.footer-brand-mark {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--amber);
+  color: var(--paper);
+  font: 900 1.05rem/1 "Montserrat", var(--font-body);
 }
 
 .footer-logo {
   color: var(--paper);
+  font: 800 1.35rem/1 var(--font-body);
+  letter-spacing: -.03em;
 }
 
 .footer-tagline {
-  margin-top: 14px;
-  font-size: 0.88rem;
-  max-width: 260px;
+  margin-top: 24px;
+  font-size: .95rem;
+  max-width: 34ch;
   line-height: 1.6;
+}
+
+.footer-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  margin-top: 24px;
+  padding: 11px 16px;
+  border-radius: 999px;
+  background: var(--paper);
+  color: var(--ink);
+  font-size: .8rem;
+  font-weight: 700;
+  transition: background var(--dur-s) var(--ease-out), color var(--dur-s) var(--ease-out);
+}
+
+.footer-cta:hover {
+  background: var(--amber);
+  color: var(--white);
 }
 
 .footer-socials {
@@ -1588,8 +1655,8 @@
 
 .footer-columns {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 24px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(24px, 3vw, 48px);
 }
 
 .footer-col-title {
@@ -1671,22 +1738,40 @@
 }
 
 .footer-wordmark {
-  font-family: var(--font-body);
-  font-weight: 800;
+  width: 100%;
+  font-family: "Montserrat", var(--font-body);
+  font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: -0.01em;
-  font-size: clamp(3rem, 14vw, 9rem);
-  line-height: 0.85;
-  color: var(--amber);
+  letter-spacing: -0.075em;
+  font-size: clamp(4rem, 18vw, 17rem);
+  line-height: .72;
+  color: transparent;
+  background: linear-gradient(180deg, var(--amber) 0%, #6f3017 115%);
+  background-clip: text;
+  -webkit-background-clip: text;
   text-align: center;
-  margin: 24px 0 8px;
+  margin: clamp(64px, 8vw, 112px) 0 32px;
   user-select: none;
 }
 
 .footer-bottom {
-  padding-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding-top: 24px;
   border-top: 1px solid rgba(247, 245, 240, 0.12);
   font-size: 0.8rem;
+}
+
+.footer-bottom nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.footer-bottom a:hover {
+  color: var(--paper);
 }
 
 /* =========================================================
@@ -1846,6 +1931,21 @@
 
   .footer-columns {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .footer-wordmark {
+    font-size: clamp(3.5rem, 20vw, 6rem);
+    letter-spacing: -0.065em;
+    margin-top: 64px;
+  }
+
+  .footer-bottom {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .footer-bottom nav {
+    gap: 18px;
   }
 
   .ledger-badge {
