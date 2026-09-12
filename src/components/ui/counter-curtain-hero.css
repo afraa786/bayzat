@@ -1,8 +1,8 @@
 .cc {
-  --cc-ink: #f7f5f0;
-  --cc-paper: #e7efe9;
-  --cc-preloader: #14261e;
-  --cc-line: rgb(255 255 255 / 22%);
+  --cc-ink: #EFEFEF;
+  --cc-paper: #EFEFEF;
+  --cc-preloader: #212121;
+  --cc-line: rgb(239 239 239 / 22%);
   --cc-frame-w: 275px;
   --cc-frame-h: 150px;
   min-height: 100svh;
@@ -13,7 +13,7 @@
 .cc-preloader {
   position: fixed; inset: 0; z-index: 1000; display: flex; flex-direction: column;
   justify-content: space-between; padding: 2.5rem; color: var(--cc-ink);
-  background: radial-gradient(120vmax 60vmax at 50% 120%, rgb(255 255 255 / 8%), transparent 60%), var(--cc-preloader);
+  background: radial-gradient(120vmax 60vmax at 50% 120%, rgb(239 239 239 / 8%), transparent 60%), var(--cc-preloader);
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); overflow: hidden;
 }
 .cc-preloader__header, .cc-preloader__footer { display: flex; justify-content: space-between; }
@@ -24,40 +24,45 @@
 .cc-preloader__footer p { font: 700 .8rem/1 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; }
 .cc-preloader__counter strong { font-variant-numeric: tabular-nums; }
 .cc-preloader__bar { position: absolute; left: 2.5rem; right: 2.5rem; bottom: 1.4rem; height: 2px; transform-origin: left; background: linear-gradient(90deg, var(--paper), var(--moss-light), var(--amber), #00bcd4); opacity: .9; }
-.cc-hero { position: relative; height: 100svh; min-height: 620px; padding: 2.5rem; display: flex; align-items: flex-end; overflow: hidden; isolation: isolate; background: var(--cc-paper); }
+.cc-hero { --cc-expanded-frame-height: clamp(380px, 52vh, 560px); --cc-expanded-frame-bottom: 2.5rem; position: relative; height: 100svh; min-height: 620px; padding: 2.5rem; display: flex; align-items: flex-end; overflow: hidden; isolation: isolate; background: var(--cc-paper); }
+.cc-hero__reveal-title { position: absolute; right: clamp(2.5rem, 6vw, 7rem); bottom: calc(var(--cc-expanded-frame-bottom) + var(--cc-expanded-frame-height) + .02em); left: clamp(2.5rem, 6vw, 7rem); z-index: 1; overflow: hidden; color: #212121; font: 800 clamp(4.5rem, 11vw, 12rem)/.78 "Montserrat", var(--font-body); letter-spacing: -.075em; text-align: center; text-transform: uppercase; pointer-events: none; }
+.cc-hero__reveal-title span { display: block; opacity: 0; transform: translateY(115%); will-change: transform, opacity; }
 .cc-hero__header { position: static; width: 100%; display: flex; flex-direction: column; }
 .cc-hero__row { display: flex; align-items: center; min-width: 0; }
 .cc-hero__row:nth-child(1), .cc-hero__row:nth-child(3) { justify-content: flex-end; }
 .cc-hero__row:nth-child(2) { gap: 2.5rem; }
-.cc-hero__row h1 { position: relative; z-index: 2; color: #fff; mix-blend-mode: difference; font: 900 clamp(3rem, min(9vw, 15svh), 10rem)/.82 "Montserrat", var(--font-body); letter-spacing: -.075em; white-space: nowrap; }
-.cc-hero__frame { position: relative; flex-shrink: 0; width: var(--cc-frame-w); height: var(--cc-frame-h); border-radius: 10px; overflow: hidden; box-shadow: 0 0 0 1px var(--cc-line), 0 30px 60px -30px rgb(0 0 0 / 50%); z-index: 2; }
+.cc-hero__row h1 { position: relative; z-index: 2; color: #EFEFEF; mix-blend-mode: difference; font: 900 clamp(3rem, min(9vw, 15svh), 10rem)/.82 "Montserrat", var(--font-body); letter-spacing: -.075em; white-space: nowrap; }
+.cc-hero__frame { position: relative; flex-shrink: 0; width: var(--cc-frame-w); height: var(--cc-frame-h); border-radius: 10px; overflow: hidden; box-shadow: 0 0 0 1px var(--cc-line), 0 30px 60px -30px rgb(33 33 33 / 50%); z-index: 2; }
 .cc-hero__frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .08s linear; }
 .cc-hero__frame img.is-active { opacity: 1; }
-.cc-hero__frame::after { content: ""; position: absolute; inset: 0; background: linear-gradient(transparent 55%, rgb(0 0 0 / 35%)); opacity: 0; transition: opacity 1s; }
+.cc-hero__frame::after { content: ""; position: absolute; inset: 0; background: linear-gradient(transparent 55%, rgb(33 33 33 / 35%)); opacity: 0; transition: opacity 1s; }
 .cc-hero__frame.is-full {
   position: absolute;
-  inset: auto 2.5rem 2.5rem;
+  inset: auto 2.5rem var(--cc-expanded-frame-bottom);
   width: auto;
-  height: clamp(380px, 52vh, 560px);
+  height: var(--cc-expanded-frame-height);
   border-radius: clamp(14px, 1.5vw, 24px);
-  box-shadow: 0 24px 80px -28px rgb(20 38 30 / 45%);
-  z-index: 0;
+  box-shadow: 0 24px 80px -28px rgb(33 33 33 / 45%);
+  z-index: 2;
 }
 .cc-hero__frame.is-full::after { opacity: 1; }
 .cc-hero__footer { position: absolute; left: 2.5rem; bottom: 2.5rem; z-index: 2; }
-.cc-hero__footer p { color: #fff; mix-blend-mode: difference; font: 700 .8rem/1 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; }
+.cc-hero__footer p { color: #EFEFEF; mix-blend-mode: difference; font: 700 .8rem/1 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; }
 .cc-word { position: relative; }
 @media (max-width: 1000px) {
   .cc { --cc-frame-w: 100px; --cc-frame-h: 56px; }
+  .cc-hero { --cc-expanded-frame-height: clamp(300px, 56vh, 500px); --cc-expanded-frame-bottom: 1.5rem; }
   .cc-preloader, .cc-hero { padding: 1.5rem; }
   .cc-preloader__bar { left: 1.5rem; right: 1.5rem; }
   .cc-hero__row:nth-child(2) { gap: 1rem; }
   .cc-hero__footer { left: 1.5rem; bottom: 18svh; }
-  .cc-hero__frame.is-full { inset: auto 1.5rem 1.5rem; height: clamp(300px, 56vh, 500px); }
+  .cc-hero__frame.is-full { inset: auto 1.5rem var(--cc-expanded-frame-bottom); }
+  .cc-hero__reveal-title { right: 1.5rem; left: 1.5rem; font-size: clamp(4rem, 13vw, 8rem); }
 }
 @media (max-width: 640px) {
-  .cc-hero { min-height: 560px; }
-  .cc-hero__frame.is-full { inset: auto 1rem 1rem; height: min(62vh, 480px); border-radius: 14px; }
+  .cc-hero { --cc-expanded-frame-height: min(62vh, 480px); --cc-expanded-frame-bottom: 1rem; min-height: 560px; }
+  .cc-hero__frame.is-full { inset: auto 1rem var(--cc-expanded-frame-bottom); border-radius: 14px; }
+  .cc-hero__reveal-title { right: 1rem; left: 1rem; font-size: clamp(3rem, 15vw, 5.5rem); letter-spacing: -.06em; }
   .cc-hero__row h1 { font-size: clamp(2.4rem, 15vw, 5rem); letter-spacing: -.065em; }
   .cc-preloader strong { font-size: clamp(2.3rem, 14vw, 5rem); }
   .cc-preloader__footer { gap: 24px; }
@@ -67,4 +72,5 @@
   .cc-word { transform: none !important; }
   .cc-hero__footer p { opacity: 1 !important; transform: none !important; }
   .cc-hero__frame { transform: none !important; }
+  .cc-hero__reveal-title span { opacity: 1 !important; transform: none !important; }
 }

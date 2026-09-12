@@ -1,14 +1,14 @@
 import "./LogoMarquee.css";
 
 const LOGOS = [
-  { name: "Celestial", color: "#6655b8" },
-  { name: "Nova", color: "#be4b32" },
-  { name: "Zenith", color: "#267a69" },
-  { name: "Acme Corp", color: "#b47720" },
-  { name: "Quantum", color: "#346bb4" },
-  { name: "Echo Valley", color: "#71813c" },
-  { name: "PULSE", color: "#c24765" },
-  { name: "APEX", color: "#ad5527" },
+  { name: "Celestial", color: "#00BCD4" },
+  { name: "Nova", color: "#212121" },
+  { name: "Zenith", color: "#00BCD4" },
+  { name: "Acme Corp", color: "#212121" },
+  { name: "Quantum", color: "#00BCD4" },
+  { name: "Echo Valley", color: "#212121" },
+  { name: "PULSE", color: "#00BCD4" },
+  { name: "APEX", color: "#212121" },
 ];
 
 export default function LogoMarquee() {

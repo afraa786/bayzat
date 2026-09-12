@@ -34,7 +34,12 @@
 .takeover-menu ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 26px; }
 .takeover-menu li a { display: inline-block; color: #212121; font-size: clamp(28px,3.2vw,48px); font-weight: 700; line-height: 1.35; }
 .takeover-menu a:hover .nav-trigger-underline, .takeover-menu a:focus-visible .nav-trigger-underline { opacity: 1; transform: translateY(0); }
-.takeover-menu .nav-trigger-underline { height: 12px; bottom: -9px; }
+.takeover-menu .nav-trigger-underline {
+  height: 8px;
+  bottom: -7px;
+  object-fit: fill;
+  object-position: left center;
+}
 .takeover-demo { color: #212121; font-size: 14px; padding-bottom: 8px; border-bottom: 1px solid currentColor; }
 .takeover-header a:focus-visible, .takeover-header button:focus-visible { outline-color: currentColor; }
 .custom-cursor { position: fixed; top: 0; left: 0; opacity: 0; pointer-events: none; mix-blend-mode: difference; width: 30px; height: 30px; border-radius: 50%; background: #00bcd4; transition: transform 350ms ease; transform: translate(-50%,-50%) scale(.3); z-index: 1100; }

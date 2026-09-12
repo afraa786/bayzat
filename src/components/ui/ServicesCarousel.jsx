@@ -1,43 +1,49 @@
 import { useRef, useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import "./services-carousel.css";
 
 const wrap = (value, length) => (value + length) % length;
 
-const DEFAULT_SERVICES = [
+const DEFAULT_REASONS = [
   {
-    eyebrow: "Core operations",
-    title: "One connected source of truth",
-    description: "Bring employee records, documents, policies, and everyday HR workflows into one dependable place.",
-    image: new URL("../../../images/office1.jpeg", import.meta.url).href,
+    eyebrow: "Connected by design",
+    title: "One System",
+    description: "HR, payroll, time, and people data work together in one dependable platform.",
+    image: new URL("../../../images/tech1.jpeg", import.meta.url).href,
   },
   {
-    eyebrow: "Payroll",
-    title: "Pay people with confidence",
-    description: "Turn complex payroll work into a clear, controlled process with fewer handoffs and fewer surprises.",
-    image: new URL("../../../images/office2.jpeg", import.meta.url).href,
-  },
-  {
-    eyebrow: "Time and attendance",
-    title: "Make every working hour visible",
-    description: "Connect schedules, attendance, leave, and approvals so managers can act before small gaps become problems.",
-    image: new URL("../../../images/office3.jpeg", import.meta.url).href,
-  },
-  {
-    eyebrow: "Employee experience",
-    title: "Give people answers without the wait",
-    description: "Simple self-service experiences put payslips, requests, documents, and updates directly in employees’ hands.",
+    eyebrow: "Less manual work",
+    title: "Move Faster",
+    description: "Automated workflows remove repetitive tasks and keep every handoff moving.",
     image: new URL("../../../images/tech2.jpeg", import.meta.url).href,
   },
   {
-    eyebrow: "Workforce insight",
-    title: "See what your organization needs next",
-    description: "Turn live workforce information into decisions leaders can understand, trust, and act on.",
-    image: new URL("../../../images/image3.jpg", import.meta.url).href,
+    eyebrow: "Built for clarity",
+    title: "Stay Informed",
+    description: "Live workforce data turns complexity into clear, timely decisions.",
+    image: new URL("../../../images/tech3.jpeg", import.meta.url).href,
+  },
+  {
+    eyebrow: "Made for people",
+    title: "Easy Everyday",
+    description: "Simple self-service gives employees answers without unnecessary waiting.",
+    image: new URL("../../../images/tech4.jpeg", import.meta.url).href,
+  },
+  {
+    eyebrow: "Ready to grow",
+    title: "Scale Smoothly",
+    description: "Flexible tools support new teams, locations, and ways of working.",
+    image: new URL("../../../images/tech5.jpeg", import.meta.url).href,
+  },
+  {
+    eyebrow: "Protected throughout",
+    title: "Trust Built In",
+    description: "Dependable controls keep sensitive people and payroll information secure.",
+    image: new URL("../../../images/tech6.jpeg", import.meta.url).href,
   },
 ];
 
-export default function ServicesCarousel({ services = DEFAULT_SERVICES }) {
+export default function ServicesCarousel({ services = DEFAULT_REASONS }) {
   const [current, setCurrent] = useState(0);
   const pointerStart = useRef(null);
   const stageRef = useRef(null);
@@ -72,11 +78,6 @@ export default function ServicesCarousel({ services = DEFAULT_SERVICES }) {
 
   return (
     <section className="services-showcase" aria-labelledby="services-showcase-title">
-      <div className="services-showcase__heading container">
-        <p className="eyebrow">What Crodlin does</p>
-        <h2 id="services-showcase-title">Services designed around how work moves</h2>
-      </div>
-
       <div
         className="service-slider"
         ref={stageRef}
@@ -94,12 +95,12 @@ export default function ServicesCarousel({ services = DEFAULT_SERVICES }) {
         }}
         onPointerMove={handlePointerMove}
         onPointerLeave={resetTilt}
-        aria-label="Crodlin services carousel"
+        aria-label="Why choose Crodlin carousel"
       >
-        <p className="service-slider__label" aria-hidden="true">Services</p>
+        <h2 className="service-slider__label" id="services-showcase-title">Why Crodlin</h2>
 
-        <button className="service-slider__button service-slider__button--prev" onClick={() => change(-1)} aria-label="Previous service">
-          <ChevronLeft />
+        <button className="service-slider__button service-slider__button--prev" onClick={() => change(-1)} aria-label="Previous reason">
+          <ArrowLeft /><span>Previous</span>
         </button>
 
         <div className="service-slider__stage">
@@ -124,8 +125,8 @@ export default function ServicesCarousel({ services = DEFAULT_SERVICES }) {
           </div>
         </div>
 
-        <button className="service-slider__button service-slider__button--next" onClick={() => change(1)} aria-label="Next service">
-          <ChevronRight />
+        <button className="service-slider__button service-slider__button--next" onClick={() => change(1)} aria-label="Next reason">
+          <span>Next</span><ArrowRight />
         </button>
 
         <p className="service-slider__count"><span>{String(current + 1).padStart(2, "0")}</span> / {String(services.length).padStart(2, "0")}</p>

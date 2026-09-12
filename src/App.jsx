@@ -16,6 +16,8 @@ import CustomCursor from "./components/CustomCursor";
 import PageShell from "./components/PageShell";
 import SolutionsPage from "./pages/SolutionsPage";
 import WhyCrodlinPage from "./pages/WhyCrodlinPage";
+import BlogPage from "./pages/BlogPage";
+import BlogDetailPage from "./pages/BlogDetailPage";
 
 export default function App() {
   if (window.location.pathname === "/solutions") {
@@ -24,6 +26,15 @@ export default function App() {
 
   if (window.location.pathname === "/why-crodlin") {
     return <PageShell mainClassName="why-crodlin-page"><WhyCrodlinPage /></PageShell>;
+  }
+
+  if (window.location.pathname === "/blog") {
+    return <PageShell mainClassName="blog-shell"><BlogPage /></PageShell>;
+  }
+
+  if (window.location.pathname.startsWith("/blog/")) {
+    const slug = decodeURIComponent(window.location.pathname.slice(6).replace(/\/$/, ""));
+    return <PageShell mainClassName="blog-detail-shell"><BlogDetailPage slug={slug} /></PageShell>;
   }
 
   return (

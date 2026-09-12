@@ -36,7 +36,7 @@ export default function WhyCrodlinPage() {
         intro="A platform should not add another layer of work. It should remove uncertainty, make ownership clear, and help every team act on the same information."
         tone="moss"
       >
-        <RibbonCta as="a" href="#get-started" className="why-cta">See Crodlin in action</RibbonCta>
+        <RibbonCta as="a" href="#get-started" className="ribbon-btn-sm why-cta">See Crodlin in action</RibbonCta>
       </EditorialSection>
     </>
   );

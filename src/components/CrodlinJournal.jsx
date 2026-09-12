@@ -60,10 +60,10 @@ const CATEGORIES = [
 ];
 
 const BOARD_COLORS = [
-  "#a4a49e", "#8c8c88", "#888884", "#9c9c96",
-  "#90908a", "#8e8e88", "#848480", "#b2b2ac",
-  "#c2c2bc", "#b6b6b0", "#aaaaa4", "#b0b0aa",
-  "#94948e", "#bcbcb6", "#a6a6a0", "#8a8a84",
+  "#efefef", "#00bcd4", "#efefef", "#00bcd4",
+  "#efefef", "#00bcd4", "#efefef", "#00bcd4",
+  "#efefef", "#00bcd4", "#efefef", "#00bcd4",
+  "#efefef", "#00bcd4", "#efefef", "#00bcd4",
 ];
 
 function JournalItem({ num, alt }) {
@@ -179,12 +179,12 @@ export default function CrodlinJournal() {
             </div>
           ))}
         </div>
-        <h2 className="journal-center-title">
+        <a className="journal-center-title" href="/blog" aria-label="Visit the Crodlin Journal">
           <span>The</span>
           <span>Crodlin</span>
           <span>Journal</span>
-        </h2>
-        <div className="journal-preview">
+        </a>
+        <a className="journal-preview" href="/blog" aria-label="View all Crodlin journals">
           <div className="preview-container">
             <div className="journal-slide">
               <img
@@ -199,7 +199,7 @@ export default function CrodlinJournal() {
               </div>
             </div>
           </div>
-        </div>
+        </a>
       </div>
     </section>
   );

@@ -42,7 +42,7 @@ export default function Hero({ cover = false }) {
       }, {
         scale: 1,
         y: 0,
-        color: "#6B7369",
+        color: "#212121",
         ease: "none",
         scrollTrigger: {
           trigger: coverElement,

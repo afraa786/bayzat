@@ -5,7 +5,7 @@
 ========================================================= */
 
 .journal-section {
-  --journal-bg: #a4a49e;
+  --journal-bg: #EFEFEF;
   --journal-bottom-space: clamp(4rem, 6vw, 7rem);
   width: 100%;
   background: var(--journal-bg);
@@ -44,7 +44,7 @@
 .journal-copy {
   flex: 1;
   max-width: 220px;
-  color: rgba(20, 38, 30, 0.72);
+  color: rgb(33 33 33 / 72%);
   font-family: var(--font-body);
   font-size: var(--step-0);
   line-height: 1.55;
@@ -86,7 +86,7 @@
 
 .journal-cats .journal-copy {
   max-width: 200px;
-  color: rgba(20, 38, 30, 0.72);
+  color: rgb(33 33 33 / 72%);
   font-size: var(--step--1);
 }
 
@@ -111,7 +111,7 @@
 
 .journal-brand-sub {
   font-size: var(--step--1);
-  color: rgba(20, 38, 30, 0.72);
+  color: rgb(33 33 33 / 72%);
   font-weight: 400;
   margin: 0;
   font-family: var(--font-body);
@@ -171,7 +171,7 @@
   font-size: 0.625rem;
   line-height: 1;
   letter-spacing: 0.08em;
-  color: rgba(20, 38, 30, 0.72);
+  color: rgb(33 33 33 / 72%);
 }
 
 .journal-img {
@@ -198,7 +198,7 @@
 
 .journal-img:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 24px rgba(10, 10, 10, 0.22);
+  box-shadow: 0 10px 24px rgb(33 33 33 / 22%);
   outline: 3px solid var(--paper);
 }
 
@@ -253,7 +253,7 @@
 .journal-preview-meta {
   max-width: 200px;
   padding-bottom: 0.5em;
-  color: rgba(20, 38, 30, 0.72);
+  color: rgb(33 33 33 / 72%);
   text-align: right;
   font-family: var(--font-body);
 }
@@ -273,7 +273,7 @@
   border-radius: 0;
   overflow: hidden;
   flex-shrink: 0;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 20px 60px rgb(33 33 33 / 30%);
 }
 
 .journal-slide {
@@ -306,7 +306,7 @@
   justify-content: flex-end;
   gap: 0.8rem;
   color: var(--white);
-  background: rgba(10, 10, 10, 0.4);
+  background: rgb(33 33 33 / 40%);
   backdrop-filter: blur(3px);
 }
 
@@ -327,7 +327,7 @@
 
 .journal-slide-tags span {
   padding: 0.25rem 0.55rem;
-  border: 1px solid rgba(255, 255, 255, 0.7);
+  border: 1px solid rgb(239 239 239 / 70%);
   border-radius: 999px;
   font-family: var(--font-mono);
   font-size: 0.65rem;

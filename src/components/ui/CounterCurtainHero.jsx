@@ -19,6 +19,7 @@ export default function CounterCurtainHero({
   rows = ["Work should", "Work for", "Everyone"],
   caption = "People. Pay. Possibilities.",
   loadingCopy = "Building better work",
+  revealTitle = "About Us",
   images = DEFAULT_IMAGES,
 }) {
   const rootRef = useRef(null);
@@ -35,6 +36,7 @@ export default function CounterCurtainHero({
       const hero = root.querySelector(".cc-hero");
       const frame = root.querySelector(".cc-hero__frame");
       const footer = root.querySelector(".cc-hero__footer p");
+      const revealHeading = root.querySelector(".cc-hero__reveal-title span");
       const frameImages = [...frame.querySelectorAll("img")];
       const fadingBlocks = root.querySelectorAll(".cc-preloader__row, .cc-preloader__footer");
       const splits = [...root.querySelectorAll(".cc-hero__row h1")].map((heading) =>
@@ -49,6 +51,7 @@ export default function CounterCurtainHero({
 
       gsap.set(words.flat(), { xPercent: (index) => index >= words[0].length && index < words[0].length + words[1].length ? 100 : -100 });
       gsap.set(footer, { opacity: 0, y: 18 });
+      gsap.set(revealHeading, { opacity: 0, yPercent: 115 });
       gsap.set(bar, { scaleX: 0 });
       frameImages.forEach((image, index) => image.classList.toggle("is-active", index === 0));
 
@@ -62,7 +65,19 @@ export default function CounterCurtainHero({
         const state = Flip.getState(frame);
         frame.classList.add("is-full");
         gsap.set(frame, { x: 0 });
-        Flip.from(state, { duration: 1.25, ease: "cc-hop", absolute: true });
+        Flip.from(state, {
+          duration: 1.25,
+          ease: "cc-hop",
+          absolute: true,
+        });
+        gsap.to(revealHeading, {
+          opacity: 1,
+          yPercent: 0,
+          duration: 1.1,
+          delay: 1,
+          ease: "power3.out",
+          overwrite: true,
+        });
       });
 
       const timeline = gsap.timeline({ delay: 0.5 });
@@ -129,6 +144,9 @@ export default function CounterCurtainHero({
       </div>
 
       <section className="cc-hero" aria-label={`${brand}: ${rows.join(" ")}`}>
+        <div className="cc-hero__reveal-title" aria-hidden="true">
+          <span>{revealTitle}</span>
+        </div>
         <div className="cc-hero__header">
           <div className="cc-hero__row"><h1>{rows[0]}</h1></div>
           <div className="cc-hero__row">

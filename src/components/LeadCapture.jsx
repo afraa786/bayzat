@@ -24,6 +24,7 @@ export default function LeadCapture() {
       <img className="lead-decorative-icon" src="/decorative-icons/half-icon.png" alt="" aria-hidden="true" />
       <img className="lead-bottom-icon" src="/decorative-icons/half-icon.png" alt="" aria-hidden="true" />
       <img className="lead-dots" src="/decorative-icons/dotted.png" alt="" aria-hidden="true" />
+      <img className="lead-dots lead-dots--bottom" src="/decorative-icons/dotted.png" alt="" aria-hidden="true" />
       <div className="container lead-inner">
         <div className="lead-copy">
           <h2 className="section-title">See Crodlin running on your own data</h2>

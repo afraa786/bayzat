@@ -18,7 +18,7 @@
 
 .cinematic-image { position: absolute; inset: 0; background: var(--ink); opacity: 0; transition: opacity 700ms ease; }
 .cinematic-image img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.08); transition: transform 1000ms ease; }
-.cinematic-image::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgb(20 38 30 / 85%), rgb(20 38 30 / 45%)), linear-gradient(0deg, rgb(20 38 30 / 60%), transparent); }
+.cinematic-image::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgb(33 33 33 / 85%), rgb(33 33 33 / 45%)), linear-gradient(0deg, rgb(33 33 33 / 60%), transparent); }
 .cinematic-content { position: relative; display: flex; align-items: center; gap: clamp(20px, 3vw, 48px); width: 100%; padding: 24px 32px; }
 .cinematic-number { align-self: flex-start; padding-top: 10px; font: 500 .85rem var(--font-mono); color: var(--amber); }
 .cinematic-copy { flex: 1; min-width: 0; }
