@@ -8,10 +8,9 @@ import "./counter-curtain-hero.css";
 gsap.registerPlugin(CustomEase, Flip, SplitText);
 CustomEase.create("cc-hop", "0.8, 0, 0.1, 1");
 
-const DEFAULT_IMAGES = Array.from(
-  { length: 10 },
-  (_, index) => `https://motionprompts.dev/c/counter-curtain-hero-reveal/img${index + 1}.jpg`,
-);
+const DEFAULT_IMAGES = [
+  "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1600&q=85",
+];
 
 export default function CounterCurtainHero({
   brand = "Crodlin",

@@ -3,22 +3,22 @@ import gsap from "gsap";
 import "./CrodlinJournal.css";
 
 const IMAGES = [
-  { num: 1, alt: "Team members collaborating on payroll processes at a meeting table", title: "Building People-First Workflows", tags: ["Workflows", "Culture"] },
-  { num: 2, alt: "HR specialist managing employee records on a modern laptop", title: "The New Employee Record", tags: ["Core HR", "Digital"] },
-  { num: 3, alt: "Finance team reviewing workforce costs and analytics dashboard", title: "Payroll Without the Friction", tags: ["Payroll", "Finance"] },
-  { num: 4, alt: "Onboarding specialist welcoming a new employee to the team", title: "A Better First Day", tags: ["Onboarding", "People"] },
-  { num: 5, alt: "Manager reviewing attendance and shift scheduling data", title: "Making Every Shift Count", tags: ["Attendance", "Planning"] },
-  { num: 6, alt: "Employee accessing leave and benefits information on mobile", title: "Self-Service That Feels Human", tags: ["Employee UX", "Mobile"] },
-  { num: 7, alt: "Payroll administrator processing monthly payroll calculations", title: "Closing Payroll with Confidence", tags: ["Payroll", "Operations"] },
-  { num: 8, alt: "Team members in a productive meeting discussing HR strategy", title: "The Rhythm of Great Teams", tags: ["Teams", "Strategy"] },
-  { num: 9, alt: "Compliance officer ensuring regulatory requirements are met", title: "Compliance by Design", tags: ["Compliance", "Policy"] },
-  { num: 10, alt: "Employee appreciation moment during team gathering", title: "Recognition That Resonates", tags: ["Culture", "Engagement"] },
-  { num: 11, alt: "Manager providing constructive feedback in a one-on-one meeting", title: "Rethinking the One-to-One", tags: ["Leadership", "Feedback"] },
-  { num: 12, alt: "HR team celebrating successful employee milestone achievement", title: "Moments Worth Celebrating", tags: ["Milestones", "People"] },
-  { num: 13, alt: "Dashboard displaying real-time workforce analytics and insights", title: "From Data to Direction", tags: ["Analytics", "Insights"] },
-  { num: 14, alt: "Growing team celebrating expansion and new hires", title: "Scaling Without Losing Culture", tags: ["Growth", "Culture"] },
-  { num: 15, alt: "Integration workflow connecting Crodlin with business tools", title: "One Connected Workplace", tags: ["Integrations", "Automation"] },
-  { num: 16, alt: "Executive reviewing comprehensive HR and payroll reports", title: "The Future of People Operations", tags: ["Leadership", "Future"] },
+  { num: 1, image: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=900&q=80", alt: "Team members collaborating on payroll processes at a meeting table", title: "Building People-First Workflows", tags: ["Workflows", "Culture"] },
+  { num: 2, image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=900&q=80", alt: "HR specialist managing employee records on a modern laptop", title: "The New Employee Record", tags: ["Core HR", "Digital"] },
+  { num: 3, image: "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=900&q=80", alt: "Finance team reviewing workforce costs and analytics dashboard", title: "Payroll Without the Friction", tags: ["Payroll", "Finance"] },
+  { num: 4, image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=80", alt: "Onboarding specialist welcoming a new employee to the team", title: "A Better First Day", tags: ["Onboarding", "People"] },
+  { num: 5, image: "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=900&q=80", alt: "Manager reviewing attendance and shift scheduling data", title: "Making Every Shift Count", tags: ["Attendance", "Planning"] },
+  { num: 6, image: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=900&q=80", alt: "Employee accessing leave and benefits information on mobile", title: "Self-Service That Feels Human", tags: ["Employee UX", "Mobile"] },
+  { num: 7, image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=80", alt: "Payroll administrator processing monthly payroll calculations", title: "Closing Payroll with Confidence", tags: ["Payroll", "Operations"] },
+  { num: 8, image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=900&q=80", alt: "Team members in a productive meeting discussing HR strategy", title: "The Rhythm of Great Teams", tags: ["Teams", "Strategy"] },
+  { num: 9, image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=80", alt: "Compliance officer ensuring regulatory requirements are met", title: "Compliance by Design", tags: ["Compliance", "Policy"] },
+  { num: 10, image: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=900&q=80", alt: "Employee appreciation moment during team gathering", title: "Recognition That Resonates", tags: ["Culture", "Engagement"] },
+  { num: 11, image: "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=900&q=80", alt: "Manager providing constructive feedback in a one-on-one meeting", title: "Rethinking the One-to-One", tags: ["Leadership", "Feedback"] },
+  { num: 12, image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=900&q=80", alt: "HR team celebrating successful employee milestone achievement", title: "Moments Worth Celebrating", tags: ["Milestones", "People"] },
+  { num: 13, image: "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=900&q=80", alt: "Dashboard displaying real-time workforce analytics and insights", title: "From Data to Direction", tags: ["Analytics", "Insights"] },
+  { num: 14, image: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=900&q=80", alt: "Growing team celebrating expansion and new hires", title: "Scaling Without Losing Culture", tags: ["Growth", "Culture"] },
+  { num: 15, image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=80", alt: "Integration workflow connecting Crodlin with business tools", title: "One Connected Workplace", tags: ["Integrations", "Automation"] },
+  { num: 16, image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=900&q=80", alt: "Executive reviewing comprehensive HR and payroll reports", title: "The Future of People Operations", tags: ["Leadership", "Future"] },
 ];
 
 function createOverlay(article) {
@@ -66,7 +66,7 @@ const BOARD_COLORS = [
   "#efefef", "#00bcd4", "#efefef", "#00bcd4",
 ];
 
-function JournalItem({ num, alt }) {
+function JournalItem({ num, image, alt }) {
   return (
     <div className="journal-item">
       <div className="journal-index" aria-hidden="true">
@@ -74,7 +74,7 @@ function JournalItem({ num, alt }) {
       </div>
       <div className="journal-img">
         <img
-          src={`https://motionprompts.dev/c/lightbox/${num}.jpeg`}
+          src={image}
           alt={alt}
           data-num={num}
           tabIndex="0"
@@ -124,7 +124,7 @@ export default function CrodlinJournal() {
       newSlide.style.right = "-100%";
 
       const newImg = document.createElement("img");
-      newImg.src = `https://motionprompts.dev/c/lightbox/${imgNumber}.jpeg`;
+      newImg.src = article.image;
       newImg.alt = event.currentTarget.alt;
       const overlay = createOverlay(article);
       overlay.style.opacity = "0";
@@ -174,7 +174,7 @@ export default function CrodlinJournal() {
           {[0, 1, 2, 3].map((row) => (
             <div key={row} className="journal-row">
               {IMAGES.slice(row * 4, (row + 1) * 4).map((img) => (
-                <JournalItem key={img.num} num={img.num} alt={img.alt} />
+                <JournalItem key={img.num} num={img.num} image={img.image} alt={img.alt} />
               ))}
             </div>
           ))}
@@ -188,7 +188,7 @@ export default function CrodlinJournal() {
           <div className="preview-container">
             <div className="journal-slide">
               <img
-                src="https://motionprompts.dev/c/lightbox/1.jpeg"
+                src={IMAGES[0].image}
                 alt={IMAGES[0].alt}
               />
               <div className="journal-slide-overlay">

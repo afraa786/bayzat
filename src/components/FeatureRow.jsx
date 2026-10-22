@@ -1,6 +1,7 @@
 import { Gauge, HeartHandshake, Workflow, LineChart } from "lucide-react";
 import { useReveal } from "../hooks/useReveal";
 import DecorativeAsset from "./DecorativeAsset";
+import DominoLetters from "./DominoLetters";
 
 const FEATURES = [
   { icon: Gauge, title: "Drive efficiency, save time", desc: "Automate the repetitive parts of HR and payroll so your team can focus on people, not paperwork." },
@@ -24,9 +25,9 @@ function FeatureCard({ icon: Icon, title, desc, index }) {
   );
 }
 
-export default function FeatureRow() {
+export default function FeatureRow({ variant = "default" }) {
   return (
-    <section className="feature-row-section" id="solutions-overview">
+    <section className={`feature-row-section${variant === "domino" ? " feature-row-section--domino" : ""}`} id="solutions-overview">
       <DecorativeAsset name="asset1" className="feature-row-accent" />
       <DecorativeAsset name="dotted" className="feature-row-dots" />
       <div className="container">
@@ -34,11 +35,15 @@ export default function FeatureRow() {
           <h2 className="section-title">One platform, countless possibilities</h2>
           <p className="feature-row-intro">Automate HR, payroll, benefits, and spend management through one connected workflow.</p>
         </div>
-        <div className="feature-row-grid">
-          {FEATURES.map((f, i) => (
-            <FeatureCard key={f.title} {...f} index={i} />
-          ))}
-        </div>
+        {variant === "domino" ? (
+          <DominoLetters />
+        ) : (
+          <div className="feature-row-grid">
+            {FEATURES.map((f, i) => (
+              <FeatureCard key={f.title} {...f} index={i} />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

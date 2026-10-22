@@ -15,16 +15,20 @@ export default function WhyCrodlinPage() {
     <>
       <CounterCurtainHero />
       <EditorialSection
-        eyebrow="Why Crodlin"
         title="Workflows should disappear. Progress should not."
         intro="Crodlin brings the systems behind work into one calm, connected platform—so your people can move faster without feeling the machinery underneath."
+        className="editorial-section--principles"
       >
         <div className="why-principles">
           {PRINCIPLES.map(([number, title, copy]) => (
-            <article className="why-principle" key={number}>
-              <span>{number}</span>
-              <h3>{title}</h3>
-              <p>{copy}</p>
+            <article className="why-principle" key={number} tabIndex={0}>
+              <div className="why-principle__content">
+                <h3>{title}</h3>
+                <p>{copy}</p>
+              </div>
+              <div className="why-principle__footer">
+                <span>{number}</span>
+              </div>
             </article>
           ))}
         </div>

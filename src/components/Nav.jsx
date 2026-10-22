@@ -65,7 +65,11 @@ export default function Nav() {
         </div>
         <nav className="takeover-menu" aria-label="Main">
           <ul>
-            {links.map(([label, href]) => <li key={label}><a href={href} onClick={() => setOpen(false)}><span className="nav-trigger-label">{label}<Squiggle /></span></a></li>)}
+            {links.map(([label, href]) => (
+              <li key={label}>
+                <a href={href} onClick={() => setOpen(false)}><span className="nav-trigger-label">{label}<Squiggle /></span></a>
+              </li>
+            ))}
           </ul>
           <a className="takeover-demo" href="#get-started" onClick={() => setOpen(false)}>Get a free demo ↗</a>
         </nav>

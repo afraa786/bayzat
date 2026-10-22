@@ -1,4 +1,5 @@
 import { ArrowDown, Check } from "lucide-react";
+import DecorativeAsset from "./DecorativeAsset";
 
 export default function SolutionsHero() {
   return (
@@ -10,6 +11,7 @@ export default function SolutionsHero() {
             <p>One calm, connected system for the people, payroll, and decisions that keep your business moving.</p>
           </div>
           <div className="solutions-hero-proof">
+            <DecorativeAsset name="asset1" className="solutions-hero-star" />
             <p><Check size={18} strokeWidth={2} /> Built around the way your team works</p>
             <p><Check size={18} strokeWidth={2} /> Ready for every stage of growth</p>
           </div>

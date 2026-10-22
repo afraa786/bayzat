@@ -27,11 +27,9 @@
   user-select: none;
 }
 .service-slider__button { position: absolute; top: 50%; z-index: 10; display: inline-flex; align-items: center; gap: 10px; width: auto; height: auto; padding: 10px 0; border: 0; border-bottom: 1px solid rgb(239 239 239 / 45%); border-radius: 0; background: transparent; color: var(--paper); font: 600 .68rem/1 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; transform: translateY(-50%); transition: color 250ms ease, border-color 250ms ease; }
-.service-slider__button--prev { left: clamp(330px, 19vw, 390px); }
 .service-slider__button--next { right: clamp(28px, 6vw, 110px); }
 .service-slider__button:hover { color: var(--amber); border-color: var(--amber); }
 .service-slider__button svg { width: 19px; height: 19px; transition: transform 250ms var(--ease-out); }
-.service-slider__button--prev:hover svg { transform: translateX(-4px); }
 .service-slider__button--next:hover svg { transform: translateX(4px); }
 .service-slider__stage { position: relative; width: min(1080px, 68vw); height: 620px; margin: 70px auto; display: grid; place-items: center; container-type: inline-size; transform: translateX(clamp(40px, 4vw, 84px)); }
 .service-slider__slides, .service-slider__infos { position: absolute; inset: 0; display: grid; place-items: center; pointer-events: none; }
@@ -58,7 +56,6 @@
   .service-slider__stage { width: 82vw; height: 540px; transform: none; }
   .service-slide-info { left: 13%; width: 74%; bottom: 12%; }
   .service-slider__label { top: 28px; left: 24px; writing-mode: horizontal-tb; transform: none; font-size: clamp(2.5rem, 9vw, 5rem); }
-  .service-slider__button--prev { left: 24px; }
   .service-slider__button--next { right: 24px; }
 }
 @media (max-width: 640px) {
@@ -67,7 +64,6 @@
   .service-slider__stage { height: 500px; }
   .service-slider__button { top: 47%; padding: 10px; border: 1px solid rgb(239 239 239 / 40%); background: var(--ink); }
   .service-slider__button span { display: none; }
-  .service-slider__button--prev { left: 12px; }
   .service-slider__button--next { right: 12px; }
   .service-slide[data-role="previous"] { transform: translate3d(calc(var(--service-slide-width) * -.72), 0, 0) rotateY(45deg) scale(.86); }
   .service-slide[data-role="next"] { transform: translate3d(calc(var(--service-slide-width) * .72), 0, 0) rotateY(-45deg) scale(.86); }

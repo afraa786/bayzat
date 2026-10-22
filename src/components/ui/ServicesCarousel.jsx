@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import "./services-carousel.css";
 
 const wrap = (value, length) => (value + length) % length;
@@ -98,10 +98,6 @@ export default function ServicesCarousel({ services = DEFAULT_REASONS }) {
         aria-label="Why choose Crodlin carousel"
       >
         <h2 className="service-slider__label" id="services-showcase-title">Why Crodlin</h2>
-
-        <button className="service-slider__button service-slider__button--prev" onClick={() => change(-1)} aria-label="Previous reason">
-          <ArrowLeft /><span>Previous</span>
-        </button>
 
         <div className="service-slider__stage">
           <div className="service-slider__slides">
