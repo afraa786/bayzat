@@ -694,11 +694,10 @@
 }
 
 .solutions-hero .solutions-hero-star {
-  top: -382px;
-  left: -190px;
+  right: -145px;
+  bottom: -160px;
   width: 370px;
   filter: grayscale(1) brightness(1.4);
-  transform: none;
 }
 
 .solutions-hero h1 {

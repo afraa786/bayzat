@@ -33,6 +33,7 @@
 .takeover-menu { padding: 120px 5vw 70px; background: var(--takeover-accent); display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 48px; }
 .takeover-menu ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 26px; }
 .takeover-menu li a { display: inline-block; color: #212121; font-size: clamp(28px,3.2vw,48px); font-weight: 700; line-height: 1.35; }
+.takeover-menu .nav-trigger-underline { object-fit: fill; }
 .takeover-menu a:hover .nav-trigger-underline, .takeover-menu a:focus-visible .nav-trigger-underline { opacity: 1; transform: translateY(0); }
 .takeover-demo { color: #212121; font-size: 14px; padding-bottom: 8px; border-bottom: 1px solid currentColor; }
 .takeover-header a:focus-visible, .takeover-header button:focus-visible { outline-color: currentColor; }
